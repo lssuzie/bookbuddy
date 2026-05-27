@@ -1,6 +1,8 @@
 # 🎙️ 万物播客 Everything-to-Podcast
 
-> **万物皆可转播客。书读不完？AI 帮你读，再讲给你听。**
+> **万物皆可转播客。AI 时代更个性化的阅读方式，更沉浸式的阅读体验。**
+> 
+> 书读不完？AI 帮你读，再讲给你听。
 
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/network)
@@ -48,17 +50,19 @@ AI 帮你读完、总结、分析
 
 ### 两种玩法，任你选
 
-**玩法一：万物播客（AI 代读 + 生成播客）**
+碎片化时代，越来越没耐心读长文本了。万物播客提供两种互补的听读方式：
+
+**玩法一：万物播客 — 快速扫描**
 > 书读不完？让 AI 帮你读，再讲给你听。
 
-把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成播客音频。通勤路上听完，全书脉络了然于胸。
+把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成 20 分钟左右的播客音频。通勤路上听完，全书脉络了然于胸。定位是**快速扫描**——不用精读，先用播客做全书概览。
 
-**玩法二：护眼有声书（直接转音频）**
-> 每天盯着屏幕 Vibe Coding，眼睛真的要报废了。
+**玩法二：护眼有声书 — 深度精读**
+> 每天盯着屏幕 Vibe Coding，眼睛真的要报废了。对真正重要的书，用你喜欢的声线逐字"读"给你听。
 
-看代码、看文档、看各种厚厚的调研资料……视力在疯狂下降。既然已经在和 AI 深度协作，为什么还要用肉眼死磕那些动辄几万字的长文档？
+对重要的书、论文、原文，用你喜欢的声线（甚至自己的声线），喜欢的节奏和语调（磁性的、沙哑的、冥想感的），生成完整的有声书。睡前听、通勤听，用耳朵逐字"阅读"。这不是替代阅读，是**全新的阅读方式**。
 
-带上耳机，闭上眼睛，用耳朵去"阅读"它们。直接把 PDF 报告、知识库 Markdown、甚至是几百页的项目文档，一键转换成高保真、有呼吸感和情感起伏的有声书。
+**两种模式互补：先听播客快速扫描全书 → 挑出值得精读的篇目 → 生成有声书深度阅读。**
 
 ### 万物播客能做什么？
 
@@ -104,7 +108,9 @@ AI 负责读和总结，TTS 负责读出来，你负责戴着耳机听。
 
 ## 🇺🇸 Everything-to-Podcast
 
-> **Turn anything into a podcast. Can't finish a book? Let AI read it, then tell you about it.**
+> **Turn anything into a podcast. A more personal, immersive way to read in the AI era.**
+> 
+> Can't finish a book? Let AI read it, then tell you about it.
 
 ### The Problem
 
@@ -131,17 +137,19 @@ Put on your ears, listen on your commute
 
 ### Two Ways to Use It
 
-**Way 1: AI-Powered Podcast (AI reads for you)**
+We live in an age of information overload and shrinking attention spans. Everything-to-Podcast offers two complementary ways to listen and learn:
+
+**Way 1: AI-Powered Podcast — Fast Scan**
 > Can't finish a book? Let AI read it, then tell you about it.
 
-Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a podcast. Listen on your commute — you'll know the entire book without reading a page.
+Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a ~20-minute podcast. Listen on your commute — you'll know the entire book without reading a page. This is **fast scanning** — skip deep reading, get the full picture first.
 
-**Way 2: Eye-Saver Audiobooks (direct text-to-speech)**
-> Staring at screens all day for Vibe Coding? Your eyes are dying.
+**Way 2: Eye-Saver Audiobooks — Deep Reading**
+> Staring at screens all day for Vibe Coding? Your eyes are dying. For the books that truly matter, listen to every word in a voice you love.
 
-Reading code, API docs, research papers... your eyesight is taking a beating. Since we're already partnering with AI, why force our eyes through massive documents?
+For important books, papers, and original texts — generate a full audiobook in a voice you love (even your own), at a pace and tone that suits you (magnetic, gravelly, meditative). Listen before bed, on your commute. Let your ears "read" word by word. This isn't replacing reading — it's **an entirely new way to read**.
 
-Put on headphones, close your eyes, let your ears do the reading. Convert PDFs, Markdown, or hundred-page docs into high-fidelity audiobooks with natural breathing and emotional nuance.
+**The two modes work together: listen to the podcast for a fast scan → pick the chapters worth deep reading → generate an audiobook for deep immersion.**
 
 ### A Real Example
 
