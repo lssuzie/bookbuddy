@@ -90,7 +90,7 @@ npx skills add lssuzie/everything-to-podcast
 
 如果你好奇背后的原理，或者想自己定制：
 
-1. **280 字切片**：防止 TTS 在长文本上"读飘"——电音、加速、吞字
+1. **按句切片（100 字上限）**：在句号处断句，防止 TTS "读飘"——电音、加速、吞字
 2. **NFKC 编码修正**：PDF/OCR 提取的乱码字自动纠正为标准汉字
 3. **断点续传**：跑到一半断网了？重跑自动跳过已生成的段落
 4. **多格式支持**：PDF、EPUB、TXT、Markdown 都能吃
@@ -175,7 +175,7 @@ Then tell your AI Agent: "Read this book, summarize each chapter, and generate a
 
 For those who want to dig deeper:
 
-1. **280-char slicing** — prevents TTS audio degradation on long texts
+1. **Sentence-boundary slicing (100 char max)** — prevents TTS audio degradation on long texts
 2. **NFKC normalization** — fixes CJK pronunciation glitches from OCR/PDF sources
 3. **Checkpoint resume** — picks up where it left off after interruptions
 4. **Multi-format** — PDF, EPUB, TXT, Markdown all supported

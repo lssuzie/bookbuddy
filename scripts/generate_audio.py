@@ -35,32 +35,35 @@ def get_mimo_key(env_path=None):
                     return match.group(1)
     return None
 
-def split_text(text, max_len=280):
-    """按字数和段落切分文本。"""
-    paragraphs = text.split('\n')
+def split_text(text, max_len=100):
+    """按句子切分文本，每段不超过 max_len 字。在句号、问号、感叹号处断句。"""
+    import re
+    # 按句子切分（保留标点）
+    sentences = re.split(r'(?<=[。？！])', text)
     chunks = []
     current_chunk = []
-    current_len = 0
 
-    for para in paragraphs:
-        para = para.strip()
-        if not para:
+    for sent in sentences:
+        sent = sent.strip()
+        if not sent:
             continue
-        if current_len + len(para) > max_len:
+        # 单句就超限，直接作为独立段落
+        if len(sent) > max_len:
             if current_chunk:
-                chunks.append("\n".join(current_chunk))
-                current_chunk = [para]
-                current_len = len(para)
-            else:
-                chunks.append(para)
+                chunks.append("".join(current_chunk))
                 current_chunk = []
-                current_len = 0
+            chunks.append(sent)
+            continue
+        # 加入当前段落
+        combined = "".join(current_chunk) + sent
+        if len(combined) > max_len and current_chunk:
+            chunks.append("".join(current_chunk))
+            current_chunk = [sent]
         else:
-            current_chunk.append(para)
-            current_len += len(para) + 1
+            current_chunk.append(sent)
 
     if current_chunk:
-        chunks.append("\n".join(current_chunk))
+        chunks.append("".join(current_chunk))
     return chunks
 
 def text_to_speech_segment(text, index, api_key, temp_dir, voice_id="白桦", speed=1.0):
@@ -226,13 +229,13 @@ def build_audiobook():
 
     # 根据是否 --fast 决定分段策略
     if args.fast:
-        # 快速模式：800 字分段，1.2 倍速
-        segments = split_text(clean_txt, max_len=800)
+        # 快速模式：200 字分段，1.2 倍速（适合内容扫描）
+        segments = split_text(clean_txt, max_len=200)
         speed = 1.2
         print(f"🎬 快速模式: {len(segments)} 段, 1.2x 语速")
     else:
-        # 标准模式：280 字分段，1.0 倍速
-        segments = split_text(clean_txt, max_len=280)
+        # 标准模式：100 字分段，1.0 倍速（保证音质稳定）
+        segments = split_text(clean_txt, max_len=100)
         speed = 1.0
         print(f"🎬 标准模式: {len(segments)} 段, 1.0x 语速")
 
