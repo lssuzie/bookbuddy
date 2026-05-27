@@ -10,9 +10,21 @@
 
 ## 🇨🇳 中文说明
 
-一个为 AI Coding Agents（如 Claude Code、Cursor、Gemini CLI 等）设计的、专注于**高保真有声书合成**的模块化技能。它通过消除手写批注/水印干扰、净化 Unicode 偏旁读音、以及应用注意力防漂音切片算法，将多种格式的文档清洗并转换为媲美专业播音品质的音频项目。
+> **💡 为什么做这个项目？**
+> 
+> 每天盯着屏幕进行 **Vibe Coding**，眼睛真的要报废了。看代码、看文档、看各种厚厚的调研资料……视力在疯狂下降。
+> 
+> 既然我们已经在和 AI 深度协作，为什么还要用肉眼死磕那些动辄几万字的长文档？
+> 
+> 于是，这个 Skill 诞生了。它不仅是用来制作小说有声书的，更是一个**“护眼利器”**。当你写代码写到眼睛酸痛、看资料看到重影时，直接把那些干巴巴的 PDF 报告、知识库 Markdown、甚至是几百页的项目文档，一键转换成高保真、有呼吸感和情感起伏的有声书。
+> 
+> 带上耳机，闭上眼睛，用耳朵去“阅读”它们。
 
-> 「将嘈杂的文字，还原为纯净的声线。」
+> 「让纸上的故事与文档，在耳畔呼吸。」
+
+---
+
+一个为 AI Coding Agents（如 Claude Code、Cursor、Gemini CLI 等）设计的、专注于**高保真有声书与技术文档音频合成**的模块化技能。它通过消除手写批注/水印干扰、净化 Unicode 偏旁读音、以及应用注意力防漂音切片算法，将多种格式的文档清洗并转换为媲美专业播音品质的音频项目。
 
 ### 🚀 快速开始
 
@@ -74,9 +86,21 @@ text-to-audiobook/
 
 ## 🇺🇸 English Guide
 
-A modular skill designed for AI Coding Agents (such as Claude Code, Cursor, Gemini CLI, etc.), specializing in **high-fidelity audiobook synthesis**. It cleans and converts various document formats into professional broadcast-quality audio projects by filtering handwritten notes/watermarks, correcting corrupted CJK Unicode pronunciations, and applying an attention-drift prevention slicing algorithm.
+> **💡 Why this project?**
+> 
+> Spending all day staring at screens for **Vibe Coding** is a nightmare for our eyes. Reading lines of code, scanning endless API docs, and digesting page after page of research... our eyesight is taking a beating.
+> 
+> Since we're partnering with AI, why are we still forcing our eyes to grind through massive, dry documents?
+> 
+> That's why this Skill was born. It’s not just for making novel audiobooks; its main mission is to be an **"eye-saver"**. When you're code-weary and double-vision starts kicking in, just convert those dry PDFs, markdown docs, or massive research papers into high-fidelity, expressive audiobooks.
+> 
+> Put on your headphones, close your eyes, and let your ears do the "reading".
 
-> "Restoring noisy text back to pure vocal lines."
+> "Let stories on paper and documents breathe in your ears."
+
+---
+
+A modular skill designed for AI Coding Agents (such as Claude Code, Cursor, Gemini CLI, etc.), specializing in **high-fidelity audiobook and technical document synthesis**. It cleans and converts various document formats into professional broadcast-quality audio projects by filtering handwritten notes/watermarks, correcting CJK Unicode pronunciation tone glitches, and applying an attention-drift prevention slicing algorithm.
 
 ### 🚀 Quick Start
 
