@@ -1,139 +1,185 @@
-# 🎧 Text-to-Audiobook Skill
+# 🎙️ 万物播客 Everything-to-Podcast
+
+> **万物皆可转播客。书读不完？AI 帮你读，再讲给你听。**
 
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/network)
-[![Skills.sh Badge](https://img.shields.io/badge/skills.sh-text--to--audiobook-blueviolet?style=flat-square)](https://skills.sh)
 
-[中文说明](#-中文说明) | [English Guide](#-english-guide)
-
----
-
-## 🇨🇳 中文说明
-
-> **💡 为什么做这个项目？**
-> 
-> 每天盯着屏幕进行 **Vibe Coding**，眼睛真的要报废了。看代码、看文档、看各种厚厚的调研资料……视力在疯狂下降。
-> 
-> 既然我们已经在和 AI 深度协作，为什么还要用肉眼死磕那些动辄几万字的长文档？
-> 
-> 于是，这个 Skill 诞生了。它不仅是用来制作小说有声书的，更是一个**“护眼利器”**。当你写代码写到眼睛酸痛、看资料看到重影时，直接把那些干巴巴的 PDF 报告、知识库 Markdown、甚至是几百页的项目文档，一键转换成高保真、有呼吸感和情感起伏的有声书。
-> 
-> 带上耳机，闭上眼睛，用耳朵去“阅读”它们。
-
-> 「让纸上的故事与文档，在耳畔呼吸。」
+[中文](#-万物播客) | [English](#-everything-to-podcast)
 
 ---
 
-一个为 AI Coding Agents（如 Claude Code、Cursor、Gemini CLI 等）设计的、专注于**高保真有声书与技术文档音频合成**的模块化技能。它通过消除手写批注/水印干扰、净化 Unicode 偏旁读音、以及应用注意力防漂音切片算法，将多种格式的文档清洗并转换为媲美专业播音品质的音频项目。
+## 🇨🇳 万物播客
 
-### 🚀 快速开始
+### 你有没有过这种经历？
 
-在您的项目工作区终端中直接运行以下命令，即可一键下载并安装此 Skill：
+- 买了一本书，翻了两页就吃灰了
+- 下载了一堆 epub，从来没打开过
+- 论文/报告堆成山，根本看不完
+- 买了书觉得愧疚，不买又忍不住
+
+**不是不想读，是读不动。**
+
+### 万物播客怎么帮你？
+
+万物播客不是又一个 TTS 工具。它是一个 **「万物转播客」工作流**——配合 AI Agent（Claude Code 等），把任何内容变成可听的播客：
+
+```
+你有内容（书/论文/文档）
+       ↓
+AI 帮你读完、总结、分析
+       ↓
+生成播客音频（男声/女声，带感情）
+       ↓
+戴上耳机，通勤路上听完
+```
+
+### 一个真实案例
+
+我有一本短篇小说集，19 篇故事，3500 行，读不下去。
+
+我让 Claude Code 读了整本书，逐篇讲给我听——每篇故事讲了什么、核心冲突是什么、情感基调怎么样。然后 AI 帮我打了分：哪篇最适合改编短片。
+
+最后我把 AI 写的故事梗概转成音频，**20 分钟的播客，通勤路上就听完了**。
+
+一本书，我一个字没读，但全书脉络了然于胸。
+
+**这才是万物播客的核心价值：不是替代阅读，是替代「读不下去」。**
+
+### 两种玩法，任你选
+
+**玩法一：万物播客（AI 代读 + 生成播客）**
+> 书读不完？让 AI 帮你读，再讲给你听。
+
+把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成播客音频。通勤路上听完，全书脉络了然于胸。
+
+**玩法二：护眼有声书（直接转音频）**
+> 每天盯着屏幕 Vibe Coding，眼睛真的要报废了。
+
+看代码、看文档、看各种厚厚的调研资料……视力在疯狂下降。既然已经在和 AI 深度协作，为什么还要用肉眼死磕那些动辄几万字的长文档？
+
+带上耳机，闭上眼睛，用耳朵去"阅读"它们。直接把 PDF 报告、知识库 Markdown、甚至是几百页的项目文档，一键转换成高保真、有呼吸感和情感起伏的有声书。
+
+### 万物播客能做什么？
+
+| 场景 | 怎么用 |
+|------|--------|
+| 小说集/散文集 | AI 逐篇总结，生成播客，先听再决定读哪篇 |
+| 技术书籍 | AI 提取核心论点，生成音频边听边理解 |
+| 论文/报告 | AI 总结方法和结论，快速判断相关性 |
+| 会议纪要 | 长文档转语音，通勤时"听完"工作材料 |
+| 新闻/文章合集 | 批量喂给 AI，生成每日新闻播客 |
+
+### 快速开始
+
+```bash
+# 安装技能
+npx skills add lssuzie/text-to-audiobook
+
+# 告诉 AI 你的文件路径，然后说：
+# "帮我读这本书，总结每篇故事，生成播客"
+```
+
+就这么简单。剩下的交给 AI。
+
+### 技术细节（给想折腾的人）
+
+如果你好奇背后的原理，或者想自己定制：
+
+1. **280 字切片**：防止 TTS 在长文本上"读飘"——电音、加速、吞字
+2. **NFKC 编码修正**：PDF/OCR 提取的乱码字自动纠正为标准汉字
+3. **断点续传**：跑到一半断网了？重跑自动跳过已生成的段落
+4. **多格式支持**：PDF、EPUB、TXT、Markdown 都能吃
+5. **音色可选**：白桦（磁性男声）等多种音色，支持声音克隆
+
+### 为什么叫「万物播客」？
+
+因为不只是书。论文、报告、会议纪要、新闻合集、甚至你微信里收藏的那些长文——**任何文字内容都可以变成播客**。
+
+AI 负责读和总结，TTS 负责读出来，你负责戴着耳机听。
+
+这就是「万物播客」：让耳朵成为你的眼睛。
+
+---
+
+## 🇺🇸 Everything-to-Podcast
+
+> **Turn anything into a podcast. Can't finish a book? Let AI read it, then tell you about it.**
+
+### The Problem
+
+- Books collecting dust on your shelf
+- EPUBs downloaded but never opened
+- Papers and reports piling up
+- You feel guilty for not reading, but you just can't get through them
+
+**It's not that you don't want to read. You just can't.**
+
+### How Everything-to-Podcast Helps
+
+This isn't another TTS tool. It's a **workflow**: combine AI Agents (Claude Code, etc.) with high-quality speech synthesis to turn any content into a listenable podcast.
+
+```
+You have content (book / paper / document)
+       ↓
+AI reads, summarizes, and analyzes it
+       ↓
+Generates podcast audio (male/female voice, with emotion)
+       ↓
+Put on your ears, listen on your commute
+```
+
+### Two Ways to Use It
+
+**Way 1: AI-Powered Podcast (AI reads for you)**
+> Can't finish a book? Let AI read it, then tell you about it.
+
+Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a podcast. Listen on your commute — you'll know the entire book without reading a page.
+
+**Way 2: Eye-Saver Audiobooks (direct text-to-speech)**
+> Staring at screens all day for Vibe Coding? Your eyes are dying.
+
+Reading code, API docs, research papers... your eyesight is taking a beating. Since we're already partnering with AI, why force our eyes through massive documents?
+
+Put on headphones, close your eyes, let your ears do the reading. Convert PDFs, Markdown, or hundred-page docs into high-fidelity audiobooks with natural breathing and emotional nuance.
+
+### A Real Example
+
+I had a short story collection — 19 stories, 3,500 lines. Couldn't finish it.
+
+I had Claude Code read the entire book, summarize each story — plot, core conflict, emotional tone. AI scored and ranked them ("which is best for film adaptation?").
+
+Then I converted the summaries to audio. **A 20-minute podcast, done during one commute.**
+
+I didn't read a single page, but I knew the entire book.
+
+**That's the core value: not replacing reading, but replacing "never getting around to reading."**
+
+### Quick Start
 
 ```bash
 npx skills add lssuzie/text-to-audiobook
 ```
 
-### 🛠️ 核心黑科技
+Then tell your AI Agent: "Read this book, summarize each chapter, and generate a podcast."
 
-普通的文本转语音（TTS）在长文本和复杂排版下极易崩溃。本 Skill 集成了以下核心解决方案：
+### Technical Details
 
-1. **防音质退化与语速失控 (280字切片)**
-   * **痛点**：TTS 在单次合成超长文本时，注意力累积误差会在中后期呈指数级上升，产生飘音、电音扭曲、越读越快和吞字等问题。
-   * **方案**：将文本严格限制在 `280` 字以内分段（零样本声音克隆下限制在 `75-105` 字），保证模型始终在最稳定状态下推理。
-2. **根治发音与声调错乱 (NFKC 兼容性标准化)**
-   * **痛点**：PDF 或 OCR 导出的文档中，许多汉字会被映射到“康熙部首”字符集而非标准 CJK 汉字集，虽然视觉相同但会使 TTS 误读或跑调。
-   * **方案**：引入 `unicodedata.normalize("NFKC", text)`，自动纠正所有偏旁部首码点为标准汉字。
-3. **输入格式解耦 (多格式支持)**
-   * 支持 **PDF、TXT、EPUB、Markdown** 多种入口。如果已有清洗好的文本，可直接跳过第一阶段的提取清洗，直达语音生成。
+For those who want to dig deeper:
 
-### 🗺️ 工作流架构
-
-```mermaid
-graph TD
-    In1[原始 PDF 文件] -->|入口 A: 需过滤手写/水印/排版| Phase1[1. 文本提取与排版清洗]
-    In2[原始 EPUB 文件] -->|入口 B: 需解析结构提取正文| Phase1
-    In3[已有 TXT/Markdown] -->|入口 C: 已清洗干净的文本| Phase2[2. Unicode 编码标准化 NFKC]
-
-    Phase1 -->|标准 Markdown| Phase2
-    Phase2 -->|消除康熙部首/部偏旁| Phase3[3. 细粒度文本切分 max_len=280]
-    Phase3 -->|多段短文本段落| DebugGate{本地调试与试听预检}
-    
-    DebugGate -->|调试通过| Phase4[4. 分段 TTS 批量合成]
-    Phase4 -->|断点续传/本地缓存| Phase5[5. 分卷自动合并与重命名]
-    Phase5 -->|ffmpeg 合并完成| Out[最终版 MP3 有声书]
-```
-
-### 📂 技能目录结构
-
-```
-text-to-audiobook/
-├── SKILL.md                 # 技能定义与 Agent 指引
-├── README.md                # 本说明文档
-├── scripts/                 # 可执行调试与处理脚本
-│   ├── extract_to_markdown.py   # PDF 字体过滤与提取
-│   ├── generate_audio.py        # 批量 TTS 音频请求
-│   ├── merge_existing.py        # ffmpeg 音频段落合并
-│   └── rename_volumes.py        # 章节智能重命名
-└── references/              # 渐进式披露详细设计规范
-    ├── debugging.md             # 本地预检与试听（Dry-run）指南
-    ├── mimo_api.md              # MiMo TTS 接口 Payload 示例
-    ├── voice_clone.md           # 零样本克隆调优规范
-    └── troubleshooting.md        # 代理与 ffmpeg 常见错误排查
-```
+1. **280-char slicing** — prevents TTS audio degradation on long texts
+2. **NFKC normalization** — fixes CJK pronunciation glitches from OCR/PDF sources
+3. **Checkpoint resume** — picks up where it left off after interruptions
+4. **Multi-format** — PDF, EPUB, TXT, Markdown all supported
+5. **Voice options** — multiple voices including voice cloning support
 
 ---
 
-## 🇺🇸 English Guide
+## 🧑‍💻 Contributing
 
-> **💡 Why this project?**
-> 
-> Spending all day staring at screens for **Vibe Coding** is a nightmare for our eyes. Reading lines of code, scanning endless API docs, and digesting page after page of research... our eyesight is taking a beating.
-> 
-> Since we're partnering with AI, why are we still forcing our eyes to grind through massive, dry documents?
-> 
-> That's why this Skill was born. It’s not just for making novel audiobooks; its main mission is to be an **"eye-saver"**. When you're code-weary and double-vision starts kicking in, just convert those dry PDFs, markdown docs, or massive research papers into high-fidelity, expressive audiobooks.
-> 
-> Put on your headphones, close your eyes, and let your ears do the "reading".
+PRs and Issues welcome! / 欢迎提交 PR 和 Issue。
 
-> "Let stories on paper and documents breathe in your ears."
-
----
-
-A modular skill designed for AI Coding Agents (such as Claude Code, Cursor, Gemini CLI, etc.), specializing in **high-fidelity audiobook and technical document synthesis**. It cleans and converts various document formats into professional broadcast-quality audio projects by filtering handwritten notes/watermarks, correcting CJK Unicode pronunciation tone glitches, and applying an attention-drift prevention slicing algorithm.
-
-### 🚀 Quick Start
-
-Run the following command in your project workspace terminal to download and install this Skill:
-
-```bash
-npx skills add lssuzie/text-to-audiobook
-```
-
-### 🛠️ Key Technical Features
-
-Standard Text-to-Speech (TTS) processes easily degrade on long texts and complex layouts. This Skill integrates the following core solutions:
-
-1. **Anti-Drift Slicing (280-Character Token Limit)**
-   * **Problem**: When synthesizing long text, attention errors accumulate exponentially in the mid-to-late stages, causing metal distortion, speed-ups, and swallowed words.
-   * **Solution**: Restricts single TTS requests to **280 characters** (75-105 characters for VoiceClone) to keep the model in its optimal state.
-2. **Pronunciation & Tone Correction (NFKC Unicode Normalization)**
-   * **Problem**: CJK characters in OCR-derived PDFs/EPUBs often map to "Kangxi Radicals" instead of standard CJK Unified Ideographs, causing pronunciation glitches in TTS engines.
-   * **Solution**: Standardizes CJK characters using `unicodedata.normalize("NFKC", text)` to ensure correct tones and accents.
-3. **Decoupled Formats (Multi-format Entrance)**
-   * Native support for **PDF, TXT, EPUB, and Markdown**. Clean texts can skip the extraction phase and jump straight into speech generation.
-
-### 🗺️ Workflow Architecture
-
-Refer to the Mermaid workflow above for detailed steps.
-
----
-
-## 🧑‍💻 贡献与作者 / Contribution & Author
-
-如果您对该项目感兴趣，欢迎提交 PR 或 Issue。 / If you are interested in this project, feel free to submit PRs or Issues.
-
-### 统计面板 / GitHub Readme Stats
+### Stats
 
 <p align="left">
   <a href="https://github.com/anuraghazra/github-readme-stats">
@@ -147,9 +193,9 @@ Refer to the Mermaid workflow above for detailed steps.
 ---
 
 > [!WARNING]
-> **免责与版权声明 (Disclaimer & Copyright)**
-> 本技能及配套脚本仅限个人学习、研究与技术交流使用，**严禁用于任何商业用途**。在使用本工具合成有声书时，请自觉遵守您所在国家和地区的著作权及版权相关法律法规。因违规商用或传播有版权音频所导致的任何侵权纠纷，均由使用者本人承担，项目作者不承担任何连带责任。
+> **免责声明 / Disclaimer**
+> 本技能及配套脚本仅限个人学习、研究与技术交流使用，**严禁用于任何商业用途**。因违规商用或传播有版权音频所导致的任何侵权纠纷，均由使用者本人承担。
 > 
-> This skill and its scripts are for personal learning, research, and technical exchange only. **Any commercial use is strictly prohibited**. When using this tool, please comply with local copyright laws. The project author assumes no liability for any copyright infringement resulting from unauthorized commercial usage.
+> This skill is for personal learning and research only. **Any commercial use is strictly prohibited.**
 
-*License: CC BY-NC-SA 4.0 / 仅限非商业性使用 (Non-Commercial Use Only)*
+*License: CC BY-NC-SA 4.0*
