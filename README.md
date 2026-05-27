@@ -50,19 +50,19 @@ AI 帮你读完、总结、分析
 
 ### 两种玩法，任你选
 
-碎片化时代，越来越没耐心读长文本了。万物播客提供两种互补的听读方式：
+信息过载的时代，重要的不是读更多，而是**用你喜欢的方式接收信息**。万物播客提供两种互补的听读方式：
 
-**玩法一：万物播客 — 快速扫描**
+**玩法一：万物播客 — AI 代读，讲给你听**
 > 书读不完？让 AI 帮你读，再讲给你听。
 
-把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成 20 分钟左右的播客音频。通勤路上听完，全书脉络了然于胸。定位是**快速扫描**——不用精读，先用播客做全书概览。
+把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成播客音频。通勤路上、做饭时候、睡前躺床上，用耳朵接收信息。不用正襟危坐翻书，**让信息主动来找你**。
 
-**玩法二：护眼有声书 — 深度精读**
+**玩法二：护眼有声书 — 用你喜欢的声音逐字读**
 > 每天盯着屏幕 Vibe Coding，眼睛真的要报废了。对真正重要的书，用你喜欢的声线逐字"读"给你听。
 
 对重要的书、论文、原文，用你喜欢的声线（甚至自己的声线），喜欢的节奏和语调（磁性的、沙哑的、冥想感的），生成完整的有声书。睡前听、通勤听，用耳朵逐字"阅读"。这不是替代阅读，是**全新的阅读方式**。
 
-**两种模式互补：先听播客快速扫描全书 → 挑出值得精读的篇目 → 生成有声书深度阅读。**
+**两种模式互补：先用播客让 AI 讲一遍全书 → 挑出值得精读的篇目 → 生成有声书用你喜欢的方式深度阅读。**
 
 ### 万物播客能做什么？
 
@@ -137,19 +137,19 @@ Put on your ears, listen on your commute
 
 ### Two Ways to Use It
 
-We live in an age of information overload and shrinking attention spans. Everything-to-Podcast offers two complementary ways to listen and learn:
+In an age of information overload, what matters isn't reading more — it's **receiving information the way you prefer**. Everything-to-Podcast offers two complementary modes:
 
-**Way 1: AI-Powered Podcast — Fast Scan**
+**Way 1: AI-Powered Podcast — AI reads, then tells you**
 > Can't finish a book? Let AI read it, then tell you about it.
 
-Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a ~20-minute podcast. Listen on your commute — you'll know the entire book without reading a page. This is **fast scanning** — skip deep reading, get the full picture first.
+Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a podcast. Listen on your commute, while cooking, before bed. No need to sit down with a book — **let the information come to you**.
 
-**Way 2: Eye-Saver Audiobooks — Deep Reading**
+**Way 2: Eye-Saver Audiobooks — Every word, in a voice you love**
 > Staring at screens all day for Vibe Coding? Your eyes are dying. For the books that truly matter, listen to every word in a voice you love.
 
 For important books, papers, and original texts — generate a full audiobook in a voice you love (even your own), at a pace and tone that suits you (magnetic, gravelly, meditative). Listen before bed, on your commute. Let your ears "read" word by word. This isn't replacing reading — it's **an entirely new way to read**.
 
-**The two modes work together: listen to the podcast for a fast scan → pick the chapters worth deep reading → generate an audiobook for deep immersion.**
+**The two modes work together: let AI tell you about the whole book → pick what's worth deep reading → generate an audiobook in your preferred voice for deep immersion.**
 
 ### A Real Example
 

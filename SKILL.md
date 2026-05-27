@@ -1,100 +1,93 @@
 ---
 name: text-to-audiobook
-description: "Convert PDF, TXT, EPUB, or Markdown documents into high-fidelity audiobooks. Handles text extraction/cleaning, CJK Unicode normalization, sentence chunking, batch audio synthesis (TTS), and volume merging."
+description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转换为高质量有声书或播客音频。支持两种模式：AI代读模式（AI读完总结后生成播客）和直接转音频模式（全文逐字朗读）。当用户提到：有声书、播客、转音频、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、或者给你一本书/论文/文档让你读，都应使用此技能。"
 ---
 
-# 文本与 PDF 转高保真有声书（Text/PDF to High-Fidelity Audiobook）
+# 万物播客 Everything-to-Podcast
 
-> 「让纸上的故事与文档，在耳畔呼吸。」
+> 万物皆可转播客。AI 时代更个性化的阅读方式，更沉浸式的阅读体验。
 
-本 Skill 旨在将各种源格式的文档（包括 PDF、TXT、EPUB、Markdown 等）清洗并转换为标准且无拼写发音乱码的有声书或朗读音频。该工作流集成了文本提取、中文字符编码标准化、针对大语言模型 TTS 的短切片算法、以及基于 ffmpeg 的多卷自动合并与断点续传控制。
+本技能将文本内容转换为高质量有声书或播客音频。配合 AI Agent 使用时，支持两种互补的工作模式。
 
 ---
 
-## 1. 核心流程与多格式入口
+## 两种模式
 
-根据您的原始输入格式，选择对应的执行入口：
+### 模式一：AI 代读 + 播客生成
 
-```mermaid
-graph TD
-    In1[原始 PDF 文件] -->|入口 A: 需过滤手写/水印/排版| Phase1[1. 文本提取与排版清洗]
-    In2[原始 EPUB 文件] -->|入口 B: 需解析结构提取正文| Phase1
-    In3[已有 TXT/Markdown] -->|入口 C: 已清洗干净的文本| Phase2[2. Unicode 编码标准化 NFKC]
+当用户给你一本书、小说集、论文、文档，说"帮我读一下"、"总结一下"、"生成播客"时：
 
-    Phase1 -->|标准 Markdown| Phase2
-    Phase2 -->|消除康熙部首/部偏旁| Phase3[3. 细粒度文本切分 max_len=280]
-    Phase3 -->|多段短文本段落| DebugGate{本地调试与试听预检}
-    
-    DebugGate -->|调试通过| Phase4[4. 分段 TTS 批量合成]
-    Phase4 -->|断点续传/本地缓存| Phase5[5. 分卷自动合并与重命名]
-    Phase5 -->|ffmpeg 合并完成| Out[最终版 MP3 有声书]
+1. **读完全文**：逐篇/逐章阅读用户给的文件
+2. **口语化总结**：用讲故事的方式，把每篇内容讲给用户听——不是干巴巴的摘要，是像朋友聊天一样讲故事
+3. **评估打分**（如果用户需要）：根据用户的需求（比如"哪篇最适合改编短片"）给出分析和排名
+4. **生成播客**：把总结文本保存为 Markdown，然后调用 TTS 脚本生成音频
+5. **告知结果**：告诉用户音频文件位置和时长
+
+**播客文本的写作要求**：
+- 像跟朋友聊天一样讲故事，不要写成分析报告
+- 先讲故事本身（发生了什么），再给评价（好不好、值不值得读）
+- 每篇控制在 300-500 字，口语化，有节奏感
+- 适合朗读：短句为主，少用括号和破折号，读出来要顺口
+
+### 模式二：直接转有声书（全文朗读）
+
+当用户想把一篇文章、论文、完整书籍转成有声书时：
+
+1. **读取文件**：支持 PDF、EPUB、TXT、Markdown
+2. **清洗文本**：去 Markdown 格式、修正编码
+3. **调用 TTS 脚本**：`python3 <skill-path>/scripts/generate_audio.py <输入文件> -o <输出文件>`
+4. **告知结果**：音频文件位置和时长
+
+---
+
+## 快速使用
+
+### 安装
+
+```bash
+npx skills add lssuzie/text-to-audiobook
 ```
 
----
+### 命令行使用
 
-## 2. 详细执行指南
+```bash
+# 基础用法：输入 md/txt，输出同名 mp3
+python3 scripts/generate_audio.py my_book.md
 
-### 阶段零：本地调试与依赖预检（重要！）
-* **说明**：在启动大规模批量合成前，必须进行底层依赖检查与单句试听，避免 API Key 配置失效或音色不符合预期导致额度浪费。
-* **指南链接**：请务必先查阅 [debugging.md](references/debugging.md) 进行本地预检与 Dry-run。
+# 指定输出路径和音色
+python3 scripts/generate_audio.py my_book.md -o output.mp3 -v 白桦
 
----
+# 快速模式（1.2倍速，适合内容扫描）
+python3 scripts/generate_audio.py my_book.md --fast
 
-### 阶段一：文本提取与清洗（非必选）
-*如果您已拥有干净的 TXT 或 Markdown 文本（入口 C），请直接跳过此阶段，从阶段二开始。*
-* **PDF 文本提取**：使用 `PyMuPDF` (`fitz`) 解析 PDF block 字典，通过正文字体白名单过滤手写批注或背景水印。
-  * **脚本参考**：[extract_to_markdown.py](scripts/extract_to_markdown.py)
-* **EPUB 文本提取**：解析 EPUB 结构，提取出纯文本或标准 Markdown 格式。
+# 指定 API Key
+MIMO_API_KEY=tp-xxx python3 scripts/generate_audio.py my_book.md
+```
 
----
+### 需要的依赖
 
-### 阶段二：Unicode 编码标准化（治愈 TTS 发音乱码）
-* **痛点问题**：文档（尤其是经过 OCR 转录的 PDF/EPUB）中许多汉字会被映射到“康熙部首”字符集而非标准 CJK 汉字集，这会导致 TTS 引擎读音及声调错乱。
-* **解决方案**：在文本送入 TTS 之前，必须执行 **NFKC 兼容性标准化**：
-  ```python
-  import unicodedata
-  normalized_text = unicodedata.normalize("NFKC", raw_text)
-  ```
+- **MiMo API Key**：从 `.env` 文件读取（支持 `~/.gemini/antigravity/scratch/.env` 或 `--env` 参数），也可通过环境变量 `MIMO_API_KEY` 传入
+- **ffmpeg**：用于合并音频分段（`brew install ffmpeg`）
 
 ---
 
-### 阶段三：长文本细粒度切片
-* **解决方案**：将单次送入 TTS 的文本长度限制在 **280 字**以内（若为零样本声音克隆 VoiceClone，建议字数限制在 **75-105 字**以内），避免模型因长周期注意力误差引入飘音、电音或语速失控。
-* **克隆优化**：关于声音克隆的声音提纯及停顿调优规范，请参考：[voice_clone.md](references/voice_clone.md)
+## 技术说明（给想深入了解的人）
 
----
+### 为什么需要 280 字切片？
 
-### 阶段四：TTS 请求规范与批量合成
-* **解决方案**：调用 TTS 引擎进行分段批量合成。
-* **接口规范**：以 MiMo TTS 调用格式为例的最佳提示词与 JSON Payload 设计，请参考：[mimo_api.md](references/mimo_api.md)
-* **脚本参考**：[generate_audio.py](scripts/generate_audio.py)
+TTS 模型在处理长文本时，注意力误差会累积，导致后半段出现飘音、电音、语速失控。将每次合成限制在 280 字以内，保证模型始终在最佳状态推理。
 
----
+### 为什么需要 NFKC 编码修正？
 
-### 阶段五：分卷自动合并与智能重命名
-由于大篇幅合成耗时较长，系统集成了断点续传和自动分卷机制：
-* **断点续传**：脚本运行时会自动检测临时分段 MP3 的存在，若存在且体积正常则直接 `skip` 跳过。
-* **分卷机制**：默认每生成 30 段音频，无缝调用 `ffmpeg` 进行 Concat 合并生成独立卷，防止中途数据丢失。
-  * **合并命令**：
-    ```bash
-    ffmpeg -y -f concat -safe 0 -i filelist.txt -c copy output.mp3
-    ```
-* **章节重命名**：调用 `rename_volumes.py` 提取切片 JSON 中的章节标题特征自动重命名，并自动解决重复章节序号。
-* **脚本参考**：[rename_volumes.py](scripts/rename_volumes.py)
+PDF/OCR 提取的中文文本中，部分汉字会被映射到"康熙部首"字符集（视觉相同但编码不同），导致 TTS 引擎读音错乱。`unicodedata.normalize("NFKC", text)` 自动修正。
 
----
+### 断点续传
 
-## 3. 错误处理与排查指南
+脚本自动检测已生成的分段文件，中断后重新运行会跳过已完成的部分。每 30 段自动合并为一个分卷 MP3，防止数据丢失。
 
-有关网络超时代理设置、API 401 报错、多音字纠偏、以及 ffmpeg 合并损坏文件的处理，请参阅：[troubleshooting.md](references/troubleshooting.md)。
-
----
-
-## 4. 专属工作空间管理
-* **最佳归档目录**：推荐在项目根目录下创建 `audiobook_workspace/`，电子书、临时分卷包、最终完整版音频以及原始参考 PDF 应全部归档于此，保持文件结构的干净整洁。
+详细技术文档参见 `references/` 目录。
 
 ---
 
 > [!WARNING]
-> **免责与版权声明 (Disclaimer & Copyright)**
-> 本技能及配套脚本仅限个人学习、研究与技术交流使用，**严禁用于任何商业用途**。在使用本工具合成有声书时，请自觉遵守著作权及版权相关法律法规。因违规商用或传播有版权音频所导致的任何侵权纠纷，均由使用者本人承担，项目作者不承担任何连带责任。
+> 本技能及配套脚本仅限个人学习、研究与技术交流使用，**严禁用于任何商业用途**。
