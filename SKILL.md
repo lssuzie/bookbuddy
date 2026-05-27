@@ -1,5 +1,5 @@
 ---
-name: pdf-to-audiobook
+name: text-to-audiobook
 description: "Convert PDF, TXT, EPUB, or Markdown documents into high-fidelity audiobooks. Handles text extraction/cleaning, CJK Unicode normalization, sentence chunking, batch audio synthesis (TTS), and volume merging."
 ---
 
