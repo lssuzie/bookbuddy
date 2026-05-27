@@ -4,8 +4,8 @@
 > 
 > 书读不完？AI 帮你读，再讲给你听。
 
-[![GitHub stars](https://img.shields.io/github/stars/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/lssuzie/text-to-audiobook.svg?style=flat-square)](https://github.com/lssuzie/text-to-audiobook/network)
+[![GitHub stars](https://img.shields.io/github/stars/lssuzie/everything-to-podcast.svg?style=flat-square)](https://github.com/lssuzie/everything-to-podcast/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/lssuzie/everything-to-podcast.svg?style=flat-square)](https://github.com/lssuzie/everything-to-podcast/network)
 
 [中文](#-万物播客) | [English](#-everything-to-podcast)
 
@@ -78,7 +78,7 @@ AI 帮你读完、总结、分析
 
 ```bash
 # 安装技能
-npx skills add lssuzie/text-to-audiobook
+npx skills add lssuzie/everything-to-podcast
 
 # 告诉 AI 你的文件路径，然后说：
 # "帮我读这本书，总结每篇故事，生成播客"
@@ -166,7 +166,7 @@ I didn't read a single page, but I knew the entire book.
 ### Quick Start
 
 ```bash
-npx skills add lssuzie/text-to-audiobook
+npx skills add lssuzie/everything-to-podcast
 ```
 
 Then tell your AI Agent: "Read this book, summarize each chapter, and generate a podcast."

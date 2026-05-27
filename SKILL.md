@@ -1,5 +1,5 @@
 ---
-name: text-to-audiobook
+name: everything-to-podcast
 description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转换为高质量有声书或播客音频。支持两种模式：AI代读模式（AI读完总结后生成播客）和直接转音频模式（全文逐字朗读）。当用户提到：有声书、播客、转音频、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、或者给你一本书/论文/文档让你读，都应使用此技能。"
 ---
 
@@ -45,7 +45,7 @@ description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转
 ### 安装
 
 ```bash
-npx skills add lssuzie/text-to-audiobook
+npx skills add lssuzie/everything-to-podcast
 ```
 
 ### 命令行使用
