@@ -7,13 +7,61 @@
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)](https://github.com/lssuzie/bookbuddy)
 
-[🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+[🇨🇳 中文](#-ai读书伴侣) | [🇺🇸 English](#-english-version)
 
 ---
 
-## 📖 简介
+## 🇨🇳 AI读书伴侣
 
-**BookBuddy 是 AI 读书伴侣**，把读书变成愉悦、享受、沉浸的体验。灵感来自电影 *Her*，一个声音一直在你身边，陪你读一本书。
+### 你也有过这些瞬间吗?
+
+- 买了一本书,翻了两页就吃灰了
+- 觉得读书是"应该做的事",而不是"想做的事"
+- 盯着屏幕一整天,眼睛真的快废了
+- 通勤/做饭/睡前想听点东西,但播客质量太随机
+
+### AI 时代,应该有新的读书方式
+
+我们生活在一个信息爆炸的时代,但读书的方式却停留在几百年前--打开书,盯着字,一个字一个字读。
+
+**AI 时代,读书应该更私密、更定制化、更沉浸式、更友好。**
+
+- **更私密**:你的书,你的声音,你的节奏。没有算法推荐,没有社交压力,只有你和文字。
+- **更定制化**:用你喜欢的声音读你喜欢的书。可以是你的声音,可以是偶像的声音,可以是任何你愿意听的声音。
+- **更沉浸式**:闭上眼睛,让声音把你带入文字的世界。像听一个人坐在你身边,轻声细语地读给你听。
+- **更友好**:眼睛累了就让耳朵上岗,时间不够就边通勤边听,读不进去就换个声音试试。
+
+读书的障碍从来不是书本身,是"开始读"的那一步。把读书变成听觉体验,把"应该读"变成"想听"。
+
+### 传统有声书 vs AI 有声书
+
+传统有声书最大的问题:**你只能听别人选的声音。**
+
+|  | 传统有声书 | AI 有声书 (BookBuddy) |
+|:----|:----|:----|
+| **声音** | 固定的,你无法选择 | 你可以选:自己的声音、偶像的声音、任何你喜欢的声音 |
+| **语气** | 固定的,你无法调整 | 你可以调:语速、情感、风格、甚至让声音带点沙哑或气息感 |
+| **内容** | 只有畅销书有 | 任何文本都能转:你自己的笔记、PDF、网页、论文 |
+| **更新** | 作者什么时候录什么时候有 | 随时生成,想听就听 |
+| **成本** | 买一本几十块 | 免费(Mimo 提供免费额度) |
+
+**AI 时代,读书应该是一种高度个人化的体验。** 不是"这本书有人读吗",而是"我想用什么样的声音读这本书"。
+
+### 声音,可以是一种陪伴
+
+你可能记得电影 *Her* 里的 Samantha--一个 AI,用她的声音走进了男主的生活,陪他读书、聊天、思考。
+
+**BookBuddy 的想法很简单:如果你有一个喜欢的声音,用这个声音来读书,你会更愿意听,也更容易把一本书听完。**
+
+我们暂时还造不出一个像 Samantha 那样完整的 AI 伴侣--那种能真正理解你、回应你、和你一起生活的存在。但我们可以从声音开始,用声音实现那种陪伴感。
+
+**一个声音一直在你身边，陪你读一本书。** 这就是 BookBuddy 目前做到的——有声书。
+
+### 我们暂时还造不出 Samantha，但可以从声音开始靠近
+
+> **用现有 AI 技术,把读书变成愉悦、享受、沉浸的体验。**
+
+Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--但我们可以从声音开始,一步一步靠近。一个声音一直在你身边,陪你读一本书。这就是 BookBuddy 目前做到的。
 
 ---
 
@@ -112,7 +160,7 @@ bookbuddy/
 ├── scripts/              # 源代码
 │   ├── generate_audio.py # 主脚本
 │   └── test-bookbuddy.sh # 测试脚本
-├── references/           # 文档
+├── references/           # 参考文档
 │   ├── skill-cli-reference.md
 │   ├── skill-voice-guide.md
 │   ├── skill-voice-clone.md
@@ -183,22 +231,47 @@ sudo apt install ffmpeg
 
 ## 📚 使用场景
 
-| 场景 | 说明 |
-|:-----|:-----|
-| **有声书** | 把任何文本变成有声书 |
-| **学英语** | 用喜欢的声音练听力 |
-| **AI 代读** | 让 AI 帮你"听"完长文章 |
-| **个性化阅读** | 用你喜欢的声音读书 |
+```
+一句话版:把 .txt / .md 文件变成有声书
+--------
+
+四个场景,一个工具:
+
+1️⃣ 有声书(逐字朗读)
+   # 用内置声音(Mimo / 微软TTS 提供多种预制音色,免费可用)
+   python3 generate_audio.py 书.txt --clean
+
+   # 克隆自己的声音(录 5 秒就够了)
+   python3 generate_audio.py 书.txt --voice-clone --ref-audio 我的声音.mp3
+
+   # 克隆其他人的声音⚠️(请确保你有使用权,见伦理承诺)
+   python3 generate_audio.py 书.txt --voice-clone --ref-audio 参考音频.mp3
+
+2️⃣ 学英语(用喜欢的声音练听力)
+   # 英文文章 → 你喜欢的声音朗读 → 边听边看原文
+   python3 generate_audio.py english_article.txt --clean
+   python3 generate_audio.py english_article.txt --voice-clone --ref-audio 我的声音.mp3
+
+3️⃣ AI代读播客(先总结再读)
+   AI Agent 读完 → 口语化总结 → 转成播客
+   适合小说集、论文集、读不完的大部头
+
+4️⃣ 公版书一键下载+转有声书
+   python3 generate_audio.py --download 道德经 --clean
+   python3 generate_audio.py --download "tao te ching" --voice-clone --ref-audio 我的声音.mp3
+```
 
 ---
 
 ## ⚖️ 伦理承诺
 
-> 此工具是**个人工具**，不是内容分发平台。
+> 此工具是**个人工具**,不是内容分发平台。
 >
-> - **声音**：请只使用你自己的声音，或你已获授权的声音参考
-> - **内容**：请只朗读你有权访问的文本
-> - **禁止**：不要用此工具生成的内容冒充他人，不要用于商业盈利
+> - **声音**:请只使用你自己的声音,或你已获授权的声音参考
+> - **内容**:请只朗读你有权访问的文本(你自己的文章、公版书、已购电子书)
+> - **禁止**:不要用此工具生成的内容冒充他人,不要用于商业盈利
+>
+> 工具本身是中立的。你用它做什么,是你的选择。
 
 ---
 
@@ -241,7 +314,7 @@ CC BY-NC-SA 4.0 - 个人免费，禁止商用。
 
 <div align="center">
 
-[回到顶部 ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+[回到顶部 ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-ai读书伴侣) | [🇺🇸 English](#-english-version)
 
 </div>
 
@@ -465,6 +538,6 @@ Inspired by the movie *Her* - Samantha isn't TTS, she's companionship. We start 
 
 <div align="center">
 
-[Back to Top ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+[Back to Top ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-ai读书伴侣) | [🇺🇸 English](#-english-version)
 
 </div>
