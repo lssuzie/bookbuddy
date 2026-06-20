@@ -1,0 +1,311 @@
+openapi: 3.0.0
+info:
+  title: BookBuddy TTS API
+  description: |
+    AI 读书伴侣 - 文本转语音 API
+    
+    支持三种模式：
+    1. **基本 TTS** (mimo-v2.5-tts) - 使用内置音色
+    2. **声音设计** (mimo-v2.5-tts-voicedesign) - 通过描述创造声音
+    3. **声音克隆** (mimo-v2.5-tts-voiceclone) - 通过音频克隆声音
+    
+    ## 内置音色
+    
+    | 名称 | 性别 | 语言 | 描述 |
+    |:-----|:-----|:-----|:-----|
+    | 冰糖 | 女 | 中文 | 甜美少女音 |
+    | 茉莉 | 女 | 中文 | 温柔知性 |
+    | 苏打 | 男 | 中文 | 阳光少年 |
+    | 白桦 | 男 | 中文 | 沉稳男声 |
+    | Mia | 女 | 英文 | American female |
+    | Chloe | 女 | 英文 | British female |
+    | Milo | 男 | 英文 | American male |
+    | Dean | 男 | 英文 | British male |
+    
+    ## 声音设计预设
+    
+    | 预设 | 描述 | 适用场景 |
+    |:-----|:-----|:---------|
+    | 睡前催眠 | 温暖、轻柔、缓慢 | 睡前故事 |
+    | 冥想引导 | 平静、中性、有磁性 | 冥想音频 |
+    | 深夜电台 | 低沉、温暖、有故事感 | 电台节目 |
+    | 温柔叙述 | 温柔、亲切 | 小说朗读 |
+    | Her 知性元气 | 温暖、知性、有活力 | 知识分享 |
+    | 悬疑小说 | 神秘、低沉、有张力 | 悬疑推理 |
+  version: 1.0.0
+  contact:
+    name: BookBuddy Support
+    url: https://github.com/lssuzie/bookbuddy/issues
+
+servers:
+  - url: https://api.xiaomimimo.com/v1
+    description: MiMo TTS API
+
+security:
+  - BearerAuth: []
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API-Key
+
+paths:
+  /chat/completions:
+    post:
+      summary: Generate Audio
+      description: |
+        Convert text to speech audio.
+        
+        **Basic TTS**: Use built-in voices for fast generation.
+        **Voice Design**: Create unique voices through text description.
+        **Voice Clone**: Clone voices from audio files.
+      operationId: generateAudio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - messages
+              properties:
+                model:
+                  type: string
+                  enum:
+                    - mimo-v2.5-tts
+                    - mimo-v2.5-tts-voicedesign
+                    - mimo-v2.5-tts-voiceclone
+                  default: mimo-v2.5-tts
+                  description: TTS model to use
+                messages:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - role
+                      - content
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, system, assistant]
+                      content:
+                        type: string
+                        description: Text to convert to speech
+                voice:
+                  type: string
+                  enum:
+                    - 冰糖
+                    - 茉莉
+                    - 苏打
+                    - 白桦
+                    - Mia
+                    - Chloe
+                    - Milo
+                    - Dean
+                  description: Built-in voice name (Basic TTS mode)
+                preset:
+                  type: string
+                  enum:
+                    - 睡前催眠
+                    - 冥想引导
+                    - 深夜电台
+                    - 温柔叙述
+                    - Her 知性元气
+                    - 悬疑小说
+                  description: Voice design preset (Voice Design mode)
+                voice_reference_audio:
+                  type: string
+                  description: Reference audio for voice cloning (Voice Clone mode). Format: data:audio/mp3;base64,...
+                chunk_size:
+                  type: integer
+                  default: 300
+                  minimum: 50
+                  maximum: 500
+                  description: Text chunk size for processing
+            examples:
+              basic_tts:
+                summary: Basic TTS with built-in voice
+                value:
+                  model: mimo-v2.5-tts
+                  messages:
+                    - role: user
+                      content: "你好，这是测试文本。"
+                  voice: 白桦
+              voice_design:
+                summary: Voice Design with preset
+                value:
+                  model: mimo-v2.5-tts-voicedesign
+                  messages:
+                    - role: user
+                      content: "晚安，愿你有个好梦。"
+                  preset: 睡前催眠
+              voice_clone:
+                summary: Voice Clone with reference audio
+                value:
+                  model: mimo-v2.5-tts-voiceclone
+                  messages:
+                    - role: user
+                      content: "这是我的克隆声音。"
+                  voice_reference_audio: "data:audio/mp3;base64,..."
+      responses:
+        '200':
+          description: Audio generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Audio ID
+                  object:
+                    type: string
+                    example: text-to-speech
+                  created:
+                    type: integer
+                    description: Unix timestamp
+                  model:
+                    type: string
+                  audio_url:
+                    type: string
+                    description: URL to download the audio
+                  audio_base64:
+                    type: string
+                    description: Base64 encoded audio data
+                  duration:
+                    type: number
+                    description: Audio duration in seconds
+                  text:
+                    type: string
+                    description: Original text
+              examples:
+                success:
+                  value:
+                    id: tts_abc123
+                    object: text-to-speech
+                    created: 1704067200
+                    model: mimo-v2.5-tts
+                    audio_url: https://cdn.xiaomimimo.com/audio/tts_abc123.mp3
+                    duration: 15.5
+                    text: "你好，这是测试文本。"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+  /voices:
+    get:
+      summary: List Available Voices
+      description: Get list of all available built-in voices
+      operationId: listVoices
+      responses:
+        '200':
+          description: List of voices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: list
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        gender:
+                          type: string
+                          enum: [male, female]
+                        language:
+                          type: string
+                          enum: [zh, en]
+                        description:
+                          type: string
+              example:
+                object: list
+                data:
+                  - name: 冰糖
+                    gender: female
+                    language: zh
+                    description: 甜美少女音
+                  - name: 茉莉
+                    gender: female
+                    language: zh
+                    description: 温柔知性
+                  - name: 白桦
+                    gender: male
+                    language: zh
+                    description: 沉稳男声
+
+  /voice-presets:
+    get:
+      summary: List Voice Design Presets
+      description: Get list of available voice design presets
+      operationId: listVoicePresets
+      responses:
+        '200':
+          description: List of presets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    example: list
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        tone:
+                          type: string
+                        speed:
+                          type: number
+              example:
+                object: list
+                data:
+                  - id: 睡前催眠
+                    name: 睡前催眠
+                    description: 温暖、轻柔、缓慢的女性声音
+                    tone: soft, warm, slow
+                    speed: 0.8
+                  - id: Her 知性元气
+                    name: Her 知性元气
+                    description: 温暖、知性、有活力的女性声音
+                    tone: warm, intelligent, energetic
+                    speed: 0.95

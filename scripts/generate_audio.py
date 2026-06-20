@@ -24,14 +24,18 @@ import os, sys, re, base64, requests, subprocess, argparse, unicodedata, tempfil
 GUTENBERG_SEARCH = "https://www.gutenberg.org/ebooks/search/?query="
 GUTENBERG_TEXT   = "https://www.gutenberg.org/cache/epub/{id}/pg{id}.txt"
 
+# 中文公版书源（维基文库）
+ZH_WIKISOURCE = "https://zh.wikisource.org/wiki/{book}"
+ZH_WIKISOURCE_TEXT = "https://zh.wikisource.org/w/index.php?title={book}&action=raw"
+
 # 常见公版书直接映射（避免依赖搜索）
 KNOWN_BOOKS = {
-    "道德经":   ["216", "Tao Te Ching（英译）"],
-    "tao te ching": ["216", "Tao Te Ching"],
-    "孙子兵法": ["17468", "Sunzi's Art of War（英译）"],
-    "art of war":  ["17468", "The Art of War"],
-    "论语":     ["7337", "Analects of Confucius（英译）"],
-    "analects":    ["7337", "The Analects"],
+    "道德经":   ["https://zh.wikisource.org/w/index.php?title=道德经&action=raw", "道德经（中文版）"],
+    "tao te ching": ["https://zh.wikisource.org/w/index.php?title=道德经&action=raw", "道德经（中文版）"],
+    "孙子兵法": ["https://zh.wikisource.org/w/index.php?title=孙子兵法&action=raw", "孙子兵法（中文版）"],
+    "art of war":  ["https://zh.wikisource.org/w/index.php?title=孙子兵法&action=raw", "孙子兵法（中文版）"],
+    "论语":     ["https://zh.wikisource.org/w/index.php?title=论语&action=raw", "论语（中文版）"],
+    "analects":    ["https://zh.wikisource.org/w/index.php?title=论语&action=raw", "论语（中文版）"],
 }
 TTS_API_URL    = "https://api.xiaomimimo.com/v1/chat/completions"
 CLONE_API_URL  = "https://api.xiaomimimo.com/v1/chat/completions"
@@ -182,16 +186,26 @@ def download_book(query):
     # --- 1. 查已知公版书映射表 ---
     if q in KNOWN_BOOKS:
         book_id, title = KNOWN_BOOKS[q]
-        url = GUTENBERG_TEXT.format(id=book_id)
-        print(f"  📖 已知公版书: 《{title}》")
-        return _download_gutenberg(url, book_id, title)
+        if book_id.startswith("http"):
+            # 直接 URL（如维基文库）
+            print(f"  📖 已知公版书: 《{title}》")
+            return _download_url(book_id, title)
+        else:
+            # Gutenberg ID
+            url = GUTENBERG_TEXT.format(id=book_id)
+            print(f"  📖 已知公版书: 《{title}》")
+            return _download_gutenberg(url, book_id, title)
 
     # --- 2. 遍历映射表的 key 做模糊匹配 ---
     for key, (book_id, title) in KNOWN_BOOKS.items():
         if key in q or q in key:
-            url = GUTENBERG_TEXT.format(id=book_id)
-            print(f"  📖 匹配到公版书: 《{title}》")
-            return _download_gutenberg(url, book_id, title)
+            if book_id.startswith("http"):
+                print(f"  📖 匹配到公版书: 《{title}》")
+                return _download_url(book_id, title)
+            else:
+                url = GUTENBERG_TEXT.format(id=book_id)
+                print(f"  📖 匹配到公版书: 《{title}》")
+                return _download_gutenberg(url, book_id, title)
 
     # --- 3. 搜索 Project Gutenberg ---
     try:
@@ -233,6 +247,28 @@ def _download_gutenberg(url, book_id, title):
             f.write(content)
         print(f"  ✅ 已保存: {out_path} ({len(content)} 字)")
         return out_path, nice_title
+    except Exception as e:
+        return None, f"下载失败: {e}"
+
+
+def _download_url(url, title):
+    """从任意 URL 下载文本文件（如维基文库 raw 页面）。"""
+    try:
+        resp = requests.get(url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+        if resp.status_code != 200:
+            return None, f"URL 下载失败 (HTTP {resp.status_code})"
+        resp.encoding = "utf-8"
+        content = resp.text
+        # 清理维基文库的 wiki 标记（可选）
+        content = re.sub(r'^==+.*?==$', '', content, flags=re.MULTILINE)  # 移除标题标记
+        content = re.sub(r'\[\[.*?\|.*?\]\]', '', content)  # 移除链接
+        content = re.sub(r'\[\[.*?\]\]', '', content)  # 移除内部链接
+        out_name = re.sub(r'[\/:*?"<>|]', '_', title)
+        out_path = f"{out_name}.txt"
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"  ✅ 已保存: {out_path} ({len(content)} 字)")
+        return out_path, title
     except Exception as e:
         return None, f"下载失败: {e}"
 
