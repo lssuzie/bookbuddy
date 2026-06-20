@@ -2,9 +2,11 @@
 
 > **AI读书伴侣 - 把读书变成愉悦、享受、沉浸的体验。**
 >
-> 让读书变成一件你想做的事,而不是你应该做的事。
+> 让读书变成一件你想做的事，而不是你应该做的事。
 >
-> 把你喜欢的任何文本,用你喜欢的任何声音,做成有声书。
+> 把你喜欢的任何文本，用你喜欢的任何声音，做成有声书。
+
+![Demo](https://raw.githubusercontent.com/lssuzie/bookbuddy/master/demo.gif)
 
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 
@@ -14,27 +16,41 @@
 
 ## 🇨🇳 AI读书伴侣
 
-### 你也有过这些瞬间吗？
+### 你也有过这些瞬间吗?
 
-- 买了一本书，翻了两页就吃灰了
-- 觉得读书是"应该做的事"，而不是"想做的事"
-- 盯着屏幕一整天，眼睛真的快废了
-- 通勤/做饭/睡前想听点东西，但播客质量太随机
+- 买了一本书,翻了两页就吃灰了
+- 觉得读书是"应该做的事",而不是"想做的事"
+- 盯着屏幕一整天,眼睛真的快废了
+- 通勤/做饭/睡前想听点东西,但播客质量太随机
 
-### AI 时代，应该有新的读书方式
+### AI 时代,应该有新的读书方式
 
-我们生活在一个信息爆炸的时代，但读书的方式却停留在几百年前——打开书，盯着字，一个字一个字读。
+我们生活在一个信息爆炸的时代,但读书的方式却停留在几百年前--打开书,盯着字,一个字一个字读。
 
-**AI 时代，读书应该更私密、更定制化、更沉浸式、更友好。**
+**AI 时代,读书应该更私密、更定制化、更沉浸式、更友好。**
 
-- **更私密**：你的书，你的声音，你的节奏。没有算法推荐，没有社交压力，只有你和文字。
-- **更定制化**：用你喜欢的声音读你喜欢的书。可以是你的声音，可以是偶像的声音，可以是任何你愿意听的声音。
-- **更沉浸式**：闭上眼睛，让声音把你带入文字的世界。像听一个人坐在你身边，轻声细语地读给你听。
-- **更友好**：眼睛累了就让耳朵上岗，时间不够就边通勤边听，读不进去就换个声音试试。
+- **更私密**:你的书,你的声音,你的节奏。没有算法推荐,没有社交压力,只有你和文字。
+- **更定制化**:用你喜欢的声音读你喜欢的书。可以是你的声音,可以是偶像的声音,可以是任何你愿意听的声音。
+- **更沉浸式**:闭上眼睛,让声音把你带入文字的世界。像听一个人坐在你身边,轻声细语地读给你听。
+- **更友好**:眼睛累了就让耳朵上岗,时间不够就边通勤边听,读不进去就换个声音试试。
 
-读书的障碍从来不是书本身，是"开始读"的那一步。把读书变成听觉体验，把"应该读"变成"想听"。
+读书的障碍从来不是书本身,是"开始读"的那一步。把读书变成听觉体验,把"应该读"变成"想听"。
 
-### 声音，可以是一种陪伴
+### 传统有声书 vs AI 有声书
+
+传统有声书最大的问题:**你只能听别人选的声音。**
+
+|  | 传统有声书 | AI 有声书 (BookBuddy) |
+|:----|:----|:----|
+| **声音** | 固定的,你无法选择 | 你可以选:自己的声音、偶像的声音、任何你喜欢的声音 |
+| **语气** | 固定的,你无法调整 | 你可以调:语速、情感、风格、甚至让声音带点沙哑或气息感 |
+| **内容** | 只有畅销书有 | 任何文本都能转:你自己的笔记、PDF、网页、论文 |
+| **更新** | 作者什么时候录什么时候有 | 随时生成,想听就听 |
+| **成本** | 买一本几十块 | 免费(Mimo 提供免费额度) |
+
+**AI 时代,读书应该是一种高度个人化的体验。** 不是"这本书有人读吗",而是"我想用什么样的声音读这本书"。
+
+### 声音,可以是一种陪伴
 
 你可能记得电影 *Her* 里的 Samantha--一个 AI,用她的声音走进了男主的生活,陪他读书、聊天、思考。
 
@@ -86,6 +102,9 @@ Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--
 # 睡前催眠模式(内置预设)
 python generate_audio.py 书.txt --voice-design "睡前催眠"
 
+# Her 知性元气(内置预设) - 温暖沙哑气息感女声,贴耳私语风格
+python generate_audio.py 书.txt --voice-design "Her 知性元气"
+
 # 自定义:低沉磁性的深夜电台男声
 python generate_audio.py 书.txt --voice-design "低沉磁性的中年男声,像深夜电台主播"
 
@@ -94,7 +113,11 @@ python generate_audio.py 书.txt --voice-design "元气明亮的少年音" \
   --design-prompt "用充满朝气的语气朗读,语速轻快"
 ```
 
-支持描述维度:性别、年龄、声线质感(磁性/沙哑/清亮)、情绪(温暖/沉稳/元气)、语速、角色(旁白/主播/导师)...
+**内置预设**:睡前催眠 / 冥想引导 / 深夜电台 / 温柔叙述 / Her 知性元气
+
+**支持描述维度**:性别、年龄、声线质感(磁性/沙哑/清亮)、情绪(温暖/沉稳/元气)、语速、角色(旁白/主播/导师)...
+
+**Her 知性元气**:温暖亲密的年轻女声,声线带有明显的沙哑和气息感,像清晨刚醒来的烟嗓质感。声音柔软但有厚度,带着慵懒的性感。像她贴着你的耳朵轻声说话,每个字都带着轻微的呼吸声。灵感来自电影 *Her* 的 Samantha。
 
 ### 配置说明
 
@@ -197,7 +220,7 @@ python3 generate_audio.py 你的书.txt --clean
 
 ### In the AI era, reading should be different
 
-We live in an age of information overload, but the way we read hasn't changed in centuries — open a book, stare at the words, read one by one.
+We live in an age of information overload, but the way we read hasn't changed in centuries - open a book, stare at the words, read one by one.
 
 **In the AI era, reading should be more private, more personalized, more immersive, more friendly.**
 
@@ -207,6 +230,20 @@ We live in an age of information overload, but the way we read hasn't changed in
 - **More friendly**: Eyes tired? Let your ears take over. No time? Listen during your commute. Can't focus? Try a different voice.
 
 The barrier to reading is never the book itself. It's that first step of "starting to read." Turn reading into a listening experience, turn "I should read" into "I want to listen."
+
+### Traditional Audiobooks vs AI Audiobooks
+
+The biggest problem with traditional audiobooks: **you can only listen to the voice someone else chose.**
+
+|  | Traditional Audiobooks | AI Audiobooks (BookBuddy) |
+|:----|:----|:----|
+| **Voice** | Fixed, you can't choose | You choose: your voice, a celebrity's voice, any voice you love |
+| **Tone** | Fixed, you can't adjust | You adjust: speed, emotion, style, even add huskiness or breathiness |
+| **Content** | Only bestsellers available | Any text: your notes, PDFs, web pages, papers |
+| **Updates** | When the author records | Generate anytime, listen whenever |
+| **Cost** | $20-30 per book | Free (Mimo offers free credits) |
+
+**In the AI era, reading should be a highly personal experience.** Not "is there an audiobook for this book?" but "what voice do I want to read this book with?"
 
 ### Voice can be a companion
 
