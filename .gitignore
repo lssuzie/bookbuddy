@@ -17,6 +17,10 @@ test_output/
 *.mp3
 *.wav
 *.m4a
+BOOKBUDDY-PRODUCT-THINKING.md
+TRANSFER-DOC.md
+The Tao Teh King, or the Tao and its Characteristics.txt
+道德经（中文版）.txt
 
 # Python
 .env
