@@ -1,9 +1,12 @@
-# 🎧 BookBuddy · AI读书伴侣
+# 🎧 BookBuddy · AI读书伴侣 Skill
 
-> **AI读书伴侣 - 把读书变成愉悦、享受、沉浸的体验**
->
+> **AI读书伴侣 Skill - 把读书变成愉悦、享受、沉浸的体验**
+>  
 > 让读书变成一件你想做的事,而不是你应该做的事。
+>  
+> **这是一个 Skill/Plugin**，让你的 AI Agent 具备文本转语音能力。
 
+[![Skill](https://img.shields.io/badge/Skill-BookBuddy-blue)](https://github.com/lssuzie/bookbuddy)
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)](https://github.com/lssuzie/bookbuddy)
 
@@ -55,9 +58,9 @@
 
 我们暂时还造不出一个像 Samantha 那样完整的 AI 伴侣--那种能真正理解你、回应你、和你一起生活的存在。但我们可以从声音开始,用声音实现那种陪伴感。
 
-**一个声音一直在你身边，陪你读一本书。** 这就是 BookBuddy 目前做到的——有声书。
+**一个声音一直在你身边,陪你读一本书。** 这就是 BookBuddy 目前做到的--有声书。
 
-### 我们暂时还造不出 Samantha，但可以从声音开始靠近
+### 我们暂时还造不出 Samantha,但可以从声音开始靠近
 
 > **用现有 AI 技术,把读书变成愉悦、享受、沉浸的体验。**
 
@@ -82,7 +85,7 @@ Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--
 
 | 模式 | 怎么做 | 适合谁 |
 |:-----|:------|:------|
-| **🎤 内置音色** | 直接用，零准备 | 想先试试的人 |
+| **🎤 内置音色** | 直接用,零准备 | 想先试试的人 |
 | **🎨 声音设计** | 用文字描述创造声线 | 想要定制但没参考音频的人 |
 | **📝 声音克隆** | 录 5 秒音频 | 想用自己的声音/有参考音频的人 |
 
@@ -116,40 +119,33 @@ Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--
 
 ---
 
-## 🚀 快速开始
+## 🚀 如何安装
 
-### 前置条件
+### 作为 Skill 安装(推荐)
 
-- Python 3.8+
-- ffmpeg
-- Mimo API Key ([获取免费额度](https://platform.xiaomimimo.com/token-plan))
+BookBuddy 是一个 **Skill/Plugin**,部署到 AI 平台后,你的 Agent 就能直接使用:
 
-### 安装
+| 平台 | 安装方式 |
+|:-----|:---------|
+| **Coze** | Bot 设置 → 添加 Plugin → 上传 `coze-plugin/DEPLOY.md` 指南 |
+| **Dify** | 工作流 → 添加 Tool → 上传 `dify-plugin/manifest.json` |
+| **GPTs** | Assistant → Actions → 上传 `openai-action/openapi.yaml` |
+
+### 作为 CLI 工具(可选)
 
 ```bash
 # 1. 克隆仓库
 git clone https://github.com/lssuzie/bookbuddy.git
 cd bookbuddy
 
-# 2. 安装依赖
-pip install -r requirements.txt
-
-# 3. 设置 API Key
+# 2. 设置 API Key
 export MIMO_API_KEY="sk-xxxxxxxxxxxxxxxxxxxx"
-```
 
-### 生成第一本有声书
-
-```bash
-# 基本 TTS
+# 3. 生成有声书
 python scripts/generate_audio.py samples/道德经.txt --clean
-
-# 声音克隆
-python scripts/generate_audio.py samples/道德经.txt --voice-clone --ref-audio my_voice.mp3
-
-# 声音设计
-python scripts/generate_audio.py samples/道德经.txt --voice-design "Her 知性元气"
 ```
+
+> 💡 **建议**:普通用户用 Skill 方式(一键安装),开发者用 CLI 方式(自己部署)。
 
 ---
 
@@ -190,16 +186,16 @@ bookbuddy/
 
 ## 🔐 配置说明
 
-BookBuddy 使用 **Mimo TTS** 作为后端引擎：
+BookBuddy 使用 **Mimo TTS** 作为后端引擎:
 
 1. 去 [platform.xiaomimimo.com/token-plan](https://platform.xiaomimimo.com/token-plan) 注册
-2. 获取 API Key（`sk-` 开头）
-3. 配置到环境变量：
+2. 获取 API Key(`sk-` 开头)
+3. 配置到环境变量:
    ```bash
    export MIMO_API_KEY="你的key"
    ```
 
-Mimo TTS 提供免费额度，声音克隆和基础 TTS 都在同一个 API 里。
+Mimo TTS 提供免费额度,声音克隆和基础 TTS 都在同一个 API 里。
 
 ### ffmpeg 安装
 
@@ -222,8 +218,8 @@ sudo apt install ffmpeg
 |:-----|:-----|
 | **NFKC 清洗** | 修正 PDF/OCR 的乱码字 |
 | **智能分片** | 防止 TTS 长句读飘、吞音 |
-| **断点续传** | 中断了重跑，跳过已生成的 |
-| **自动下载** | 搜公版书，一键下载转有声书 |
+| **断点续传** | 中断了重跑,跳过已生成的 |
+| **自动下载** | 搜公版书,一键下载转有声书 |
 | **声音克隆** | 5 秒录音克隆任何声线 |
 | **分卷合并** | 每 30 段自动合并为 MP3 |
 
@@ -255,6 +251,12 @@ sudo apt install ffmpeg
 3️⃣ AI代读播客(先总结再读)
    AI Agent 读完 → 口语化总结 → 转成播客
    适合小说集、论文集、读不完的大部头
+   
+   **步骤：**
+   1. 阅读用户提供的文档/书籍
+   2. 生成口语化总结（像朋友聊天）
+   3. 调用 TTS 转成音频
+   4. 返回播客音频
 
 4️⃣ 公版书一键下载+转有声书
    python3 generate_audio.py --download 道德经 --clean
@@ -277,7 +279,7 @@ sudo apt install ffmpeg
 
 ## 🤝 贡献
 
-欢迎提交 Issue 和 Pull Request！
+欢迎提交 Issue 和 Pull Request!
 
 ```bash
 git clone https://github.com/lssuzie/bookbuddy.git
@@ -290,7 +292,7 @@ git push origin feature/your-feature
 
 ## 📄 许可证
 
-CC BY-NC-SA 4.0 - 个人免费，禁止商用。
+CC BY-NC-SA 4.0 - 个人免费,禁止商用。
 
 ---
 
@@ -306,9 +308,9 @@ CC BY-NC-SA 4.0 - 个人免费，禁止商用。
 
 **BookBuddy** - 让读书变成愉悦、享受、沉浸的体验。
 
-> 一个声音一直在你身边，陪你读一本书。
+> 一个声音一直在你身边,陪你读一本书。
 
-灵感来自电影 *Her* - Samantha 不是 TTS，她是陪伴。我们从声音开始，一步一步靠近。
+灵感来自电影 *Her* - Samantha 不是 TTS,她是陪伴。我们从声音开始,一步一步靠近。
 
 ---
 
