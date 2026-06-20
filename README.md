@@ -40,17 +40,21 @@
 一句话版：把 .txt / .md 文件变成有声书
 --------
 
-支持三种用法：
+四个场景，一个工具：
 
 1️⃣ 有声书（逐字朗读）
    python3 generate_audio.py 书.txt --clean -v 白桦
    python3 generate_audio.py 书.txt --voice-clone --ref-audio 我的声音.mp3
 
-2️⃣ AI代读播客（先总结再读）
+2️⃣ 学英语（用喜欢的声音练听力）
+   # 英文文章 → 偶像声音朗读 → 边听边看原文
+   python3 generate_audio.py english_article.txt --voice-clone --ref-audio 偶像的声音.mp3
+
+3️⃣ AI代读播客（先总结再读）
    AI Agent 读完 → 口语化总结 → 转成播客
    适合小说集、论文集、读不完的大部头
 
-3️⃣ 公版书一键下载+转有声书
+4️⃣ 公版书一键下载+转有声书
    python3 generate_audio.py --download 道德经 -v 白桦
    python3 generate_audio.py --download "tao te ching" --voice-clone --ref-audio 我的声音.mp3
 ```
@@ -61,14 +65,19 @@
 # 1. 安装依赖
 brew install ffmpeg
 
-# 2. 配好 API Key
-export MIMO_API_KEY="你的key"   # 去 https://100t.xiaomimimo.com/ 申请
+# 2. 获取 API Key（免费额度）
+#    去 https://100t.xiaomimimo.com/ 注册 → 复制你的 tp-xxx 开头的 Key
+export MIMO_API_KEY="你的key"
 
-# 3. 生成有声书
+# 3. 生成第一本有声书
 python3 generate_audio.py 你的书.txt --clean -v 白桦
 ```
 
-更详细的用法见 [`scripts/generate_audio.py --help`](scripts/generate_audio.py)。
+> 💡 **没有书？** 试试一键下载公版书：
+> `python3 generate_audio.py --download 道德经 -v 白桦`
+
+> 💡 **想用自己的声音？** 录 5 秒音频：
+> `python3 generate_audio.py 书.txt --voice-clone --ref-audio 我录的5秒.mp3`
 
 ### 技术亮点
 
