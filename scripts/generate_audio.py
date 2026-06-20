@@ -599,14 +599,6 @@ def main():
     mode_label = "声音设计（预设：" + args.voice_design + "）" if args.voice_design else \
                  "声音克隆" if args.voice_clone else "基础TTS"
     print(f"📊 分段: {len(segments)} 段 (≤{max_len}字), {mode_label}, {speed}x")
-    elif args.voice_design:
-        print(f"🎨 声音设计: {design_desc}")
-        if style_prompt:
-            print(f"🎨 朗读风格: {style_prompt}")
-        prompt_text = ""
-    else:
-        prompt_text = ""
-        print(f"🎤 音色: {args.voice or '默认（白桦/冰糖）'}")
 
     # ---- 批量合成 ----
     part_files = []
