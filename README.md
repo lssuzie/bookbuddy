@@ -1,16 +1,16 @@
-# 🎧 Everything-to-Podcast
+# 🎧 BookBuddy · AI悦读
 
 > **让读书变成一件你想做的事，而不是你应该做的事。**
 >
 > 把你喜欢的任何文本，用你喜欢的任何声音，做成有声书。
 
-[![GitHub stars](https://img.shields.io/github/stars/lssuzie/everything-to-podcast.svg?style=flat-square)](https://github.com/lssuzie/everything-to-podcast/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 
-[中文](#-万物播客) | [English](#-everything-to-podcast)
+[中文](#-ai悦读) | [English](#-bookbuddy)
 
 ---
 
-## 🇨🇳 万物播客
+## 🇨🇳 AI悦读
 
 ### 这是给谁用的？
 
@@ -102,7 +102,7 @@ python3 generate_audio.py 你的书.txt --clean -v 白桦
 
 ---
 
-## 🇺🇸 Everything-to-Podcast
+## 🇺🇸 BookBuddy
 
 > **Make reading something you *want* to do, not something you *should* do.**
 >
