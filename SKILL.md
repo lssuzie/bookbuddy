@@ -1,175 +1,91 @@
 ---
 name: bookbuddy
-description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转换为高质量有声书音频。支持三种模式：基础TTS（内置音色）、声音设计（文字描述创造声线）、声音克隆。当用户提到：有声书、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、或者给你一本书让你读，都应使用此技能。"
+description: "有声书、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、给你一本书让你读、帮我读这本书、生成有声书。"
 ---
 
-# 万物播客 Everything-to-Podcast
+# BookBuddy · AI 读书伴侣
 
-> 万物皆可转播客。AI 时代更个性化的阅读方式，更沉浸式的阅读体验。
+> 把读书变成愉悦、享受、沉浸的体验。
 
-本技能将文本内容转换为高质量有声书或播客音频。配合 AI Agent 使用时，支持两种互补的工作模式。
+将文本转换为高质量有声书音频。Agent 调用时，根据用户意图选择分支。
 
 ---
 
-## 两种模式
+## 分支
 
-### 模式一：AI 代读 + 播客生成
+### Branch A: 有声书（直接朗读）
 
-当用户给你一本书、小说集、论文、文档，说"帮我读一下"、"总结一下"、"生成播客"时：
+用户说："帮我读这本书"、"生成有声书"、"把这本书转成音频"
+
+**步骤：**
+
+1. **确认文件**：确认用户提供的文本文件（PDF/EPUB/TXT/Markdown/网页）
+2. **询问声音偏好**（可选）：
+   - 用户有指定声音 → 用指定声音
+   - 用户无指定 → 推荐 `Her 知性元气`（温暖沙哑气息感女声）或 `白桦`（沉稳磁性男声）
+   - 用户想克隆自己 → 引导录 5 秒音频
+3. **调用 TTS**：`python3 <skill-path>/scripts/generate_audio.py <文件> --clean`
+   - 指定声音：`--voice-design "Her 知性元气"` 或 `-v <内置音色>`
+   - 克隆声音：`--voice-clone --ref-audio <音频>`
+4. **确认完成**：音频已生成，告知路径和时长
+
+**完成标准：**
+- ✅ 音频文件已生成
+- ✅ 告知用户文件路径和时长
+- ✅ 引导试听前 30 秒，询问是否需要调优
+
+### Branch B: AI 代读 + 播客
+
+用户说："帮我总结一下这本书"、"生成播客"、"读一下这个文档集"
+
+**步骤：**
 
 1. **读完全文**：逐篇/逐章阅读用户给的文件
-2. **口语化总结**：用讲故事的方式，把每篇内容讲给用户听——不是干巴巴的摘要，是像朋友聊天一样讲故事
-3. **评估打分**（如果用户需要）：根据用户的需求（比如"哪篇最适合改编短片"）给出分析和排名
-4. **生成播客**：把总结文本保存为 Markdown，然后调用 TTS 脚本生成音频
-5. **告知结果**：告诉用户音频文件位置和时长
+2. **口语化总结**：用讲故事的方式，像朋友聊天一样讲给用户听
+   - 先讲故事本身（发生了什么）
+   - 再给评价（好不好、值不值得读）
+   - 每篇 300-500 字，口语化，短句为主
+3. **生成播客文本**：保存为 Markdown
+4. **调用 TTS**：同上（Branch A 步骤 3）
+5. **告知结果**：音频路径 + 时长
 
-**播客文本的写作要求**：
-- 像跟朋友聊天一样讲故事，不要写成分析报告
-- 先讲故事本身（发生了什么），再给评价（好不好、值不值得读）
-- 每篇控制在 300-500 字，口语化，有节奏感
-- 适合朗读：短句为主，少用括号和破折号，读出来要顺口
-
-### 模式二：直接转有声书（全文朗读）
-
-当用户想把一篇文章、论文、完整书籍转成有声书时：
-
-1. **读取文件**：支持 PDF、EPUB、TXT、Markdown
-2. **清洗文本**：去 Markdown 格式、修正编码
-3. **调用 TTS 脚本**：`python3 <skill-path>/scripts/generate_audio.py <输入文件> -o <输出文件>`
-4. **告知结果**：音频文件位置和时长
+**完成标准：**
+- ✅ 播客文本已生成（口语化，非分析报告）
+- ✅ 音频已生成
+- ✅ 告知用户路径和时长
 
 ---
 
-## 快速使用
+## 声音选择（参考）
 
-### 安装
+| 预设 | 声线 | 适合 |
+|:-----|:-----|:-----|
+| `Her 知性元气` | 温暖沙哑气息感，贴耳私语 | 一切——BookBuddy 的灵魂声线 |
+| `睡前催眠` | 温和缓慢，越来越轻 | 睡前读物、散文 |
+| `深夜电台` | 磁性醇厚，亲切不亲密 | 散文、随笔、情感类 |
+| `悬疑小说` | 沉稳男中音，神秘悬念感 | 悬疑/推理/惊悚小说 |
 
-```bash
-npx skills add lssuzie/bookbuddy
-```
+**内置音色：** 冰糖（CN 女）、茉莉（CN 女）、苏打（CN 男）、白桦（CN 男）
 
-### 命令行使用
-
-#### 模式一：基础 TTS（预制音色）
-```bash
-# 基础用法
-python3 scripts/generate_audio.py my_book.md
-
-# 指定音色和输出
-python3 scripts/generate_audio.py my_book.md -o output.mp3 -v 白桦
-
-# 快速模式（1.2倍速，200字分段）
-python3 scripts/generate_audio.py my_book.md --fast
-```
-
-#### 模式二：声音克隆（零样本克隆）
-```bash
-# 用克隆声音朗读（参考音频 5-8 秒最佳）
-python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考音频.mp3
-
-# 指定朗读风格
-python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考.mp3 --clone-prompt 标准流利
-
-# 完整流程：清洗+克隆+分卷
-python3 scripts/generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考音频.mp3 -o 书_有声书.mp3
-```
-
-#### 模式三：搜索公版书 + 一键生成
-```bash
-# 自动搜索古籍/公版书，下载后转有声书
-python3 scripts/generate_audio.py --download 道德经 -v 白桦
-
-# 下载后用声音克隆朗读
-python3 scripts/generate_audio.py --download 道德经 --voice-clone --ref-audio 我的声音.mp3
-
-# 只下载不转音频
-python3 scripts/generate_audio.py --download 论语 --download-only
-
-# 直接传 URL
-python3 scripts/generate_audio.py --download https://example.com/article.txt
-```
-
-#### 通用选项
-```bash
-# 文档清洗（去分隔线/URL/硬换行）
-python3 scripts/generate_audio.py 书.txt --clean
-
-# 指定语速
-python3 scripts/generate_audio.py 书.txt -s 1.35
-
-# 保留分段文件（断点续传）
-python3 scripts/generate_audio.py 书.txt --no-cleanup
-
-# 指定 API Key
-MIMO_API_KEY=tp-xxx python3 scripts/generate_audio.py 书.md
-```
-
-### 需要的依赖
-
-- **MiMo API Key**：从 `.env` 文件读取（支持 `~/.gemini/antigravity/scratch/.env` 或 `--env` 参数），也可通过环境变量 `MIMO_API_KEY` 传入
-- **ffmpeg**：用于合并音频分段（`brew install ffmpeg`）
-- **PyMuPDF**（可选）：PDF 转有声书时需要（`pip3 install PyMuPDF`）
+**更多细节：** 见 `references/skill-voice-guide.md`
 
 ---
 
-## 调试与调优指南
+## 技术参考（Agent 不需要加载）
 
-生成音频后，**主动引导用户试听并调优**。不要等用户发现问题才处理。
-
-### 第一步：先试听再批量
-
-生成完整有声书前，先让用户听一小段确认效果：
-
-```
-"音频已生成，先听一下前 30 秒，告诉我：
-1. 声音好不好听？想换个音色吗？
-2. 语速合适吗？要快一点还是慢一点？
-3. 有没有读错的字或奇怪的地方？"
-```
-
-用户确认后再跑全量。
-
-### 音色调整
-
-`-v` 参数切换音色，常用选项：
-- `白桦`：磁性男声（默认）
-- 其他可用音色见 API 文档
-
-如果用户想要特定风格（温柔、沉稳、活泼），可以调整 prompt 里的描述词。
-
-### 语速调整
-
-- `--fast`：1.2 倍速，适合快速扫描内容
-- 默认：1.0 倍速，适合深度聆听
-- 微调语速可在 `text_to_speech_segment` 的 payload 中修改 `speed` 参数
-
-### 常见问题排查
-
-| 症状 | 原因 | 解决方案 |
-|------|------|---------|
-| 后半段语速变快/变慢 | 切片太长 | 确认使用 100 字切片（默认） |
-| 某些字读错 | PDF 提取乱码 | 先跑 NFKC 修正，或检查源文件 |
-| 音频有电音/杂音 | API 超时或网络不稳 | 重跑会自动跳过已生成段落 |
-| 合并后有断裂感 | 分段拼接处 | 正常现象，每段开头会有微小停顿 |
-| 想用自己的声音 | 需要声音克隆 | 参考 `references/voice_clone.md` |
+- CLI 命令参考：`references/skill-cli-reference.md`
+- 调试与调优：`references/skill-troubleshooting.md`
+- 声音克隆指南：`references/skill-voice-clone.md`
 
 ---
 
-## 技术说明（给想深入了解的人）
+## 伦理承诺
 
-### 为什么需要按句切片（100 字上限）？
+> 此工具是**个人工具**，不是内容分发平台。
 
-TTS 模型在处理长文本时，注意力误差会累积，导致后半段出现飘音、电音、语速失控。将每次合成限制在 100 字以内，并在句号、问号、感叹号处断句，保证模型始终在最佳状态推理，语调自然不断裂。
-
-### 为什么需要 NFKC 编码修正？
-
-PDF/OCR 提取的中文文本中，部分汉字会被映射到"康熙部首"字符集（视觉相同但编码不同），导致 TTS 引擎读音错乱。`unicodedata.normalize("NFKC", text)` 自动修正。
-
-### 断点续传
-
-脚本自动检测已生成的分段文件，中断后重新运行会跳过已完成的部分。每 30 段自动合并为一个分卷 MP3，防止数据丢失。
-
-详细技术文档参见 `references/` 目录。
+- **声音**：请只使用你自己的声音，或你已获授权的声音参考
+- **内容**：请只朗读你有权访问的文本
+- **禁止**：不要用此工具生成的内容冒充他人，不要用于商业盈利
 
 ---
 
