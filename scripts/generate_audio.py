@@ -430,6 +430,9 @@ def build_parser():
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3 --clone-prompt 标准流利
 
+  # 自定义分段长度（默认按模式自动调整：克隆100字 / TTS 300字 / 设计500字）
+  python generate_audio.py 书.md --voice-design "睡前催眠" --chunk-size 1000  # 长段落更连贯
+
   # 带文档清洗
   python generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考.mp3
 
@@ -470,6 +473,8 @@ def build_parser():
                    help="快速模式 (1.2x 语速 + 200字分段)")
     p.add_argument("-s", "--speed", type=float, default=None,
                    help="语速倍率 (覆盖 --fast 的默认速度)")
+    p.add_argument("--chunk-size", type=int, default=None,
+                   help="手动设置分段长度（覆盖按模式自动调整的默认值）")
 
     # 处理选项
     p.add_argument("--clean", action="store_true",
@@ -555,36 +560,45 @@ def main():
         print(f"   📄 原文: {len(text)} 字（未清洗）")
 
     # ---- 分段 ----
-    max_len = 200 if args.fast else 100
+    # 默认分段长度按模式自动调整：
+    #   声音克隆：≤100字（克隆模型长文本不稳定）
+    #   基础 TTS：≤300字（稳定，长一点更连贯）
+    #   声音设计：≤500字（voicedesign 模型擅长长文本，长一点更有上下文感）
+    if args.voice_clone:
+        default_chunk = 100
+    elif args.voice_design:
+        default_chunk = 500
+    else:
+        default_chunk = 300
+    max_len = args.chunk_size or (200 if args.fast else default_chunk)
     segments = split_text(text, max_len=max_len)
     speed = args.speed or (1.2 if args.fast else 1.0)
+    
+    # ---- 提示词准备 ----
     if args.voice_design:
-        # 检查是否使用了预设
         design_preset = DESIGN_PRESETS.get(args.voice_design)
         if design_preset:
             design_desc = design_preset["voice"]
             style_prompt = design_preset["style"]
-            mode_label = f"声音设计（预设：{args.voice_design}）"
         else:
             design_desc = args.voice_design
             style_prompt = args.design_prompt or ""
-            mode_label = "声音设计（自定义）"
         if args.design_prompt and not design_preset:
             style_prompt = args.design_prompt
     elif args.voice_clone:
-        mode_label = "声音克隆"
-    else:
-        mode_label = "基础TTS"
-    print(f"📊 分段: {len(segments)} 段 (≤{max_len}字), {mode_label}, {speed}x")
-
-    # ---- 提示词 ----
-    if args.voice_clone:
         if args.clone_prompt == "自定义" and args.clone_prompt_text:
             prompt_text = args.clone_prompt_text
         else:
             prompt_text = CLONE_PROMPTS.get(args.clone_prompt, CLONE_PROMPTS["有声书"])
         print(f"🎤 参考音频: {args.ref_audio}")
         print(f"🎤 朗读风格: {args.clone_prompt}")
+    else:
+        prompt_text = ""
+        print(f"🎤 音色: {args.voice or '默认（白桦/冰糖）'}")
+    
+    mode_label = "声音设计（预设：" + args.voice_design + "）" if args.voice_design else \
+                 "声音克隆" if args.voice_clone else "基础TTS"
+    print(f"📊 分段: {len(segments)} 段 (≤{max_len}字), {mode_label}, {speed}x")
     elif args.voice_design:
         print(f"🎨 声音设计: {design_desc}")
         if style_prompt:
