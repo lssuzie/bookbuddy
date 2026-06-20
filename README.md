@@ -14,14 +14,27 @@
 
 ## 🇨🇳 AI读书伴侣
 
-### 你也有过这些瞬间吗?
+### 你也有过这些瞬间吗？
 
-- 买了一本书,翻了两页就吃灰了
-- 觉得读书是"应该做的事",而不是"想做的事"
-- 盯着屏幕一整天,眼睛真的快废了
-- 通勤/做饭/睡前想听点东西,但播客质量太随机
+- 买了一本书，翻了两页就吃灰了
+- 觉得读书是"应该做的事"，而不是"想做的事"
+- 盯着屏幕一整天，眼睛真的快废了
+- 通勤/做饭/睡前想听点东西，但播客质量太随机
 
-### 声音,可以是一种陪伴
+### AI 时代，应该有新的读书方式
+
+我们生活在一个信息爆炸的时代，但读书的方式却停留在几百年前——打开书，盯着字，一个字一个字读。
+
+**AI 时代，读书应该更私密、更定制化、更沉浸式、更友好。**
+
+- **更私密**：你的书，你的声音，你的节奏。没有算法推荐，没有社交压力，只有你和文字。
+- **更定制化**：用你喜欢的声音读你喜欢的书。可以是你的声音，可以是偶像的声音，可以是任何你愿意听的声音。
+- **更沉浸式**：闭上眼睛，让声音把你带入文字的世界。像听一个人坐在你身边，轻声细语地读给你听。
+- **更友好**：眼睛累了就让耳朵上岗，时间不够就边通勤边听，读不进去就换个声音试试。
+
+读书的障碍从来不是书本身，是"开始读"的那一步。把读书变成听觉体验，把"应该读"变成"想听"。
+
+### 声音，可以是一种陪伴
 
 你可能记得电影 *Her* 里的 Samantha--一个 AI,用她的声音走进了男主的生活,陪他读书、聊天、思考。
 
@@ -182,15 +195,28 @@ python3 generate_audio.py 你的书.txt --clean
 - Stared at screens all day until your eyes hurt
 - Wanted something good to listen to on your commute
 
+### In the AI era, reading should be different
+
+We live in an age of information overload, but the way we read hasn't changed in centuries — open a book, stare at the words, read one by one.
+
+**In the AI era, reading should be more private, more personalized, more immersive, more friendly.**
+
+- **More private**: Your book, your voice, your pace. No algorithm recommendations, no social pressure, just you and the text.
+- **More personalized**: Read with the voice you love. Your own voice, a celebrity's voice, or any voice you want to listen to.
+- **More immersive**: Close your eyes, let the voice carry you into the world of the text. Like someone sitting beside you, reading softly.
+- **More friendly**: Eyes tired? Let your ears take over. No time? Listen during your commute. Can't focus? Try a different voice.
+
+The barrier to reading is never the book itself. It's that first step of "starting to read." Turn reading into a listening experience, turn "I should read" into "I want to listen."
+
 ### Voice can be a companion
 
-You might remember Samantha from the movie *Her* — an AI who used her voice to enter a man's life, reading with him, talking with him, thinking with him.
+You might remember Samantha from the movie *Her* - an AI who used her voice to enter a man's life, reading with him, talking with him, thinking with him.
 
-**BookBuddy's idea is simple: if you have a voice you love, reading with that voice makes you want to listen more — and finish more books.**
+**BookBuddy's idea is simple: if you have a voice you love, reading with that voice makes you want to listen more - and finish more books.**
 
-We can't build a full Samantha-like AI companion yet — an AI that truly understands you, responds to you, and lives with you. But we can start with voice, and use voice to create that sense of companionship.
+We can't build a full Samantha-like AI companion yet - an AI that truly understands you, responds to you, and lives with you. But we can start with voice, and use voice to create that sense of companionship.
 
-**A voice that's always there, reading a book with you.** That's what BookBuddy does today — audiobooks.
+**A voice that's always there, reading a book with you.** That's what BookBuddy does today - audiobooks.
 
 The barrier to reading is never the book itself. It's that first step of "starting to read." Turn reading into a listening experience, turn "I should read" into "I want to listen."
 
@@ -203,7 +229,7 @@ The barrier to reading is never the book itself. It's that first step of "starti
 
 > **Use existing AI technology to make reading a pleasure, an enjoyment, an immersion.**
 
-Samantha isn't TTS. She's companionship. We can't build a full AI companion system yet — but we can start with voice, and get closer, step by step. A voice that's always there, reading a book with you. That's what BookBuddy does today.
+Samantha isn't TTS. She's companionship. We can't build a full AI companion system yet - but we can start with voice, and get closer, step by step. A voice that's always there, reading a book with you. That's what BookBuddy does today.
 
 ### Three modes, three ways to get your voice
 
