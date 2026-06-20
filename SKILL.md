@@ -50,18 +50,58 @@ npx skills add lssuzie/everything-to-podcast
 
 ### 命令行使用
 
+#### 模式一：基础 TTS（预制音色）
 ```bash
-# 基础用法：输入 md/txt，输出同名 mp3
+# 基础用法
 python3 scripts/generate_audio.py my_book.md
 
-# 指定输出路径和音色
+# 指定音色和输出
 python3 scripts/generate_audio.py my_book.md -o output.mp3 -v 白桦
 
-# 快速模式（1.2倍速，适合内容扫描）
+# 快速模式（1.2倍速，200字分段）
 python3 scripts/generate_audio.py my_book.md --fast
+```
+
+#### 模式二：声音克隆（零样本克隆）
+```bash
+# 用克隆声音朗读（参考音频 5-8 秒最佳）
+python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考音频.mp3
+
+# 指定朗读风格
+python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考.mp3 --clone-prompt 标准流利
+
+# 完整流程：清洗+克隆+分卷
+python3 scripts/generate_audio.py 书.txt --clean --voice-clone --ref-audio 梁朝伟_普通话参考.mp3 -o 书_有声书.mp3
+```
+
+#### 模式三：搜索公版书 + 一键生成
+```bash
+# 自动搜索古籍/公版书，下载后转有声书
+python3 scripts/generate_audio.py --download 道德经 -v 白桦
+
+# 下载后用声音克隆朗读
+python3 scripts/generate_audio.py --download 道德经 --voice-clone --ref-audio 我的声音.mp3
+
+# 只下载不转音频
+python3 scripts/generate_audio.py --download 论语 --download-only
+
+# 直接传 URL
+python3 scripts/generate_audio.py --download https://example.com/article.txt
+```
+
+#### 通用选项
+```bash
+# 文档清洗（去分隔线/URL/硬换行）
+python3 scripts/generate_audio.py 书.txt --clean
+
+# 指定语速
+python3 scripts/generate_audio.py 书.txt -s 1.35
+
+# 保留分段文件（断点续传）
+python3 scripts/generate_audio.py 书.txt --no-cleanup
 
 # 指定 API Key
-MIMO_API_KEY=tp-xxx python3 scripts/generate_audio.py my_book.md
+MIMO_API_KEY=tp-xxx python3 scripts/generate_audio.py 书.md
 ```
 
 ### 需要的依赖

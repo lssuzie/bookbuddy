@@ -1,11 +1,10 @@
-# 🎙️ 万物播客 Everything-to-Podcast
+# 🎧 Everything-to-Podcast
 
-> **万物皆可转播客。AI 时代更个性化的阅读方式，更沉浸式的阅读体验。**
-> 
-> 书读不完？AI 帮你读，再讲给你听。
+> **让读书变成一件你想做的事，而不是你应该做的事。**
+>
+> 把你喜欢的任何文本，用你喜欢的任何声音，做成有声书。
 
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/everything-to-podcast.svg?style=flat-square)](https://github.com/lssuzie/everything-to-podcast/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/lssuzie/everything-to-podcast.svg?style=flat-square)](https://github.com/lssuzie/everything-to-podcast/network)
 
 [中文](#-万物播客) | [English](#-everything-to-podcast)
 
@@ -13,197 +12,127 @@
 
 ## 🇨🇳 万物播客
 
-### 你有没有过这种经历？
+### 这是给谁用的？
+
+**给你自己。** 如果你也有过这些瞬间：
 
 - 买了一本书，翻了两页就吃灰了
-- 下载了一堆 epub，从来没打开过
-- 论文/报告堆成山，根本看不完
-- 买了书觉得愧疚，不买又忍不住
+- 觉得读书是"应该做的事"，而不是"想做的事"
+- 盯着屏幕一整天，眼睛真的快废了
+- 通勤/做饭/睡前想听点东西，但播客质量太随机
 
-**不是不想读，是读不动。**
+### 为什么会有这个工具
 
-### 万物播客怎么帮你？
+因为对自己有用。
 
-万物播客不是又一个 TTS 工具。它是一个 **「万物转播客」工作流**——配合 AI Agent（Claude Code 等），把任何内容变成可听的播客：
+我很喜欢梁朝伟。如果用他的声音来读书，我会更愿意听，也会更容易把一本书听完。既然这个逻辑对我成立，那对很多人应该也成立——
+
+- 追星的人可以用偶像的声音读书
+- 学英语的人可以用喜欢的声音练听力
+- 阅读困难的人可以换成听觉输入
+- 眼睛累了的人可以让耳朵上岗
+
+**读书的障碍从来不是书本身，是"开始读"的那一步。**
+
+### 它能做什么
 
 ```
-你有内容（书/论文/文档）
-       ↓
-AI 帮你读完、总结、分析
-       ↓
-生成播客音频（男声/女声，带感情）
-       ↓
-戴上耳机，通勤路上听完
+一句话版：把 .txt / .md 文件变成有声书
+--------
+
+支持三种用法：
+
+1️⃣ 有声书（逐字朗读）
+   python3 generate_audio.py 书.txt --clean -v 白桦
+   python3 generate_audio.py 书.txt --voice-clone --ref-audio 我的声音.mp3
+
+2️⃣ AI代读播客（先总结再读）
+   AI Agent 读完 → 口语化总结 → 转成播客
+   适合小说集、论文集、读不完的大部头
+
+3️⃣ 公版书一键下载+转有声书
+   python3 generate_audio.py --download 道德经 -v 白桦
+   python3 generate_audio.py --download "tao te ching" --voice-clone --ref-audio 我的声音.mp3
 ```
-
-### 一个真实案例
-
-我有一本短篇小说集，19 篇故事，3500 行，读不下去。
-
-我让 Claude Code 读了整本书，逐篇讲给我听——每篇故事讲了什么、核心冲突是什么、情感基调怎么样。然后 AI 帮我打了分：哪篇最适合改编短片。
-
-最后我把 AI 写的故事梗概转成音频，**20 分钟的播客，通勤路上就听完了**。
-
-一本书，我一个字没读，但全书脉络了然于胸。
-
-**这才是万物播客的核心价值：不是替代阅读，是替代「读不下去」。**
-
-### 两种玩法，任你选
-
-信息过载的时代，重要的不是读更多，而是**用你喜欢的方式接收信息**。万物播客提供两种互补的听读方式：
-
-**玩法一：万物播客 — AI 代读，讲给你听**
-> 书读不完？让 AI 帮你读，再讲给你听。
-
-把 epub/pdf/md 喂给 AI，AI 读完逐篇总结，再转成播客音频。通勤路上、做饭时候、睡前躺床上，用耳朵接收信息。不用正襟危坐翻书，**让信息主动来找你**。
-
-**玩法二：护眼有声书 — 用你喜欢的声音逐字读**
-> 每天盯着屏幕 Vibe Coding，眼睛真的要报废了。对真正重要的书，用你喜欢的声线逐字"读"给你听。
-
-对重要的书、论文、原文，用你喜欢的声线（甚至自己的声线），喜欢的节奏和语调（磁性的、沙哑的、冥想感的），生成完整的有声书。睡前听、通勤听，用耳朵逐字"阅读"。这不是替代阅读，是**全新的阅读方式**。
-
-**两种模式互补：先用播客让 AI 讲一遍全书 → 挑出值得精读的篇目 → 生成有声书用你喜欢的方式深度阅读。**
-
-### 万物播客能做什么？
-
-| 场景 | 怎么用 |
-|------|--------|
-| 小说集/散文集 | AI 逐篇总结，生成播客，先听再决定读哪篇 |
-| 技术书籍 | AI 提取核心论点，生成音频边听边理解 |
-| 论文/报告 | AI 总结方法和结论，快速判断相关性 |
-| 会议纪要 | 长文档转语音，通勤时"听完"工作材料 |
-| 新闻/文章合集 | 批量喂给 AI，生成每日新闻播客 |
 
 ### 快速开始
 
 ```bash
-# 安装技能
-npx skills add lssuzie/everything-to-podcast
+# 1. 安装依赖
+brew install ffmpeg
 
-# 告诉 AI 你的文件路径，然后说：
-# "帮我读这本书，总结每篇故事，生成播客"
+# 2. 配好 API Key
+export MIMO_API_KEY="你的key"   # 去 https://100t.xiaomimimo.com/ 申请
+
+# 3. 生成有声书
+python3 generate_audio.py 你的书.txt --clean -v 白桦
 ```
 
-就这么简单。剩下的交给 AI。
+更详细的用法见 [`scripts/generate_audio.py --help`](scripts/generate_audio.py)。
 
-### 技术细节（给想折腾的人）
+### 技术亮点
 
-如果你好奇背后的原理，或者想自己定制：
+| 特性 | 为什么重要 |
+|:----|:----------|
+| **NFKC 清洗** | 修正 PDF/OCR 的乱码字，读出来不崩 |
+| **智能分片 ≤100字** | 防止 TTS 长句读飘、吞音、电音 |
+| **断点续传** | 中断了重跑，跳过已生成的，不白等 |
+| **--download** | 搜公版书/Gutenberg，一键下载转有声书 |
+| **声音克隆** | 用 5 秒录音克隆任何声线（用户自备参考音频） |
+| **分卷合并** | 每 30 段自动合并，ffmpeg 成最终 MP3 |
 
-1. **按句切片（100 字上限）**：在句号处断句，防止 TTS "读飘"——电音、加速、吞字
-2. **NFKC 编码修正**：PDF/OCR 提取的乱码字自动纠正为标准汉字
-3. **断点续传**：跑到一半断网了？重跑自动跳过已生成的段落
-4. **多格式支持**：PDF、EPUB、TXT、Markdown 都能吃
-5. **音色可选**：白桦（磁性男声）等多种音色，支持声音克隆
+### 伦理承诺
 
-### 为什么叫「万物播客」？
-
-因为不只是书。论文、报告、会议纪要、新闻合集、甚至你微信里收藏的那些长文——**任何文字内容都可以变成播客**。
-
-AI 负责读和总结，TTS 负责读出来，你负责戴着耳机听。
-
-这就是「万物播客」：让耳朵成为你的眼睛。
+> 此工具是**个人工具**，不是内容分发平台。
+>
+> - **声音**：请只使用你自己的声音，或你已获授权的声音参考
+> - **内容**：请只朗读你有权访问的文本（你自己的文章、公版书、已购电子书）
+> - **禁止**：不要用此工具生成的内容冒充他人，不要用于商业盈利
+>
+> 工具本身是中立的。你用它做什么，是你的选择。
 
 ---
 
 ## 🇺🇸 Everything-to-Podcast
 
-> **Turn anything into a podcast. A more personal, immersive way to read in the AI era.**
-> 
-> Can't finish a book? Let AI read it, then tell you about it.
+> **Make reading something you *want* to do, not something you *should* do.**
+>
+> Turn any text into an audiobook, in any voice you love.
 
-### The Problem
+### Who is this for?
 
-- Books collecting dust on your shelf
-- EPUBs downloaded but never opened
-- Papers and reports piling up
-- You feel guilty for not reading, but you just can't get through them
+**For yourself.** If you've ever:
 
-**It's not that you don't want to read. You just can't.**
+- Bought a book and never opened it
+- Felt reading was homework, not pleasure
+- Stared at screens all day until your eyes hurt
+- Wanted something good to listen to on your commute
 
-### How Everything-to-Podcast Helps
-
-This isn't another TTS tool. It's a **workflow**: combine AI Agents (Claude Code, etc.) with high-quality speech synthesis to turn any content into a listenable podcast.
-
-```
-You have content (book / paper / document)
-       ↓
-AI reads, summarizes, and analyzes it
-       ↓
-Generates podcast audio (male/female voice, with emotion)
-       ↓
-Put on your ears, listen on your commute
-```
-
-### Two Ways to Use It
-
-In an age of information overload, what matters isn't reading more — it's **receiving information the way you prefer**. Everything-to-Podcast offers two complementary modes:
-
-**Way 1: AI-Powered Podcast — AI reads, then tells you**
-> Can't finish a book? Let AI read it, then tell you about it.
-
-Feed your epub/pdf/md to AI. It reads the whole thing, summarizes each chapter, and generates a podcast. Listen on your commute, while cooking, before bed. No need to sit down with a book — **let the information come to you**.
-
-**Way 2: Eye-Saver Audiobooks — Every word, in a voice you love**
-> Staring at screens all day for Vibe Coding? Your eyes are dying. For the books that truly matter, listen to every word in a voice you love.
-
-For important books, papers, and original texts — generate a full audiobook in a voice you love (even your own), at a pace and tone that suits you (magnetic, gravelly, meditative). Listen before bed, on your commute. Let your ears "read" word by word. This isn't replacing reading — it's **an entirely new way to read**.
-
-**The two modes work together: let AI tell you about the whole book → pick what's worth deep reading → generate an audiobook in your preferred voice for deep immersion.**
-
-### A Real Example
-
-I had a short story collection — 19 stories, 3,500 lines. Couldn't finish it.
-
-I had Claude Code read the entire book, summarize each story — plot, core conflict, emotional tone. AI scored and ranked them ("which is best for film adaptation?").
-
-Then I converted the summaries to audio. **A 20-minute podcast, done during one commute.**
-
-I didn't read a single page, but I knew the entire book.
-
-**That's the core value: not replacing reading, but replacing "never getting around to reading."**
-
-### Quick Start
+### What it does
 
 ```bash
-npx skills add lssuzie/everything-to-podcast
+# Read a book with built-in voices
+python3 generate_audio.py my_book.txt --clean -v 白桦
+
+# Voice clone (record 5 seconds of your voice / a voice you have rights to)
+python3 generate_audio.py my_book.txt --voice-clone --ref-audio my_voice.mp3
+
+# Download a public domain book + convert in one step
+python3 generate_audio.py --download "tao te ching" --voice-clone --ref-audio my_voice.mp3
 ```
 
-Then tell your AI Agent: "Read this book, summarize each chapter, and generate a podcast."
+### Ethical Commitment
 
-### Technical Details
-
-For those who want to dig deeper:
-
-1. **Sentence-boundary slicing (100 char max)** — prevents TTS audio degradation on long texts
-2. **NFKC normalization** — fixes CJK pronunciation glitches from OCR/PDF sources
-3. **Checkpoint resume** — picks up where it left off after interruptions
-4. **Multi-format** — PDF, EPUB, TXT, Markdown all supported
-5. **Voice options** — multiple voices including voice cloning support
+> This is a **personal tool**, not a content platform.
+>
+> - **Voice**: Use only your own voice, or voices you have permission to use
+> - **Content**: Read only text you have rights to access
+> - **No**: Don't impersonate others, don't use for commercial purposes
+>
+> The tool is neutral. What you do with it is your choice.
 
 ---
 
-## 🧑‍💻 Contributing
+## License
 
-PRs and Issues welcome! / 欢迎提交 PR 和 Issue。
-
-### Stats
-
-<p align="left">
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img height="180" src="https://github-readme-stats.vercel.app/api?username=lssuzie&show_icons=true&theme=radial" alt="lssuzie's GitHub stats" />
-  </a>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=lssuzie&layout=compact&theme=radial" alt="Top Langs" />
-  </a>
-</p>
-
----
-
-> [!WARNING]
-> **免责声明 / Disclaimer**
-> 本技能及配套脚本仅限个人学习、研究与技术交流使用，**严禁用于任何商业用途**。因违规商用或传播有版权音频所导致的任何侵权纠纷，均由使用者本人承担。
-> 
-> This skill is for personal learning and research only. **Any commercial use is strictly prohibited.**
-
-*License: CC BY-NC-SA 4.0*
+CC BY-NC-SA 4.0 — Free for personal use, no commercial use.
