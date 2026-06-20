@@ -43,6 +43,26 @@ CLONE_PROMPTS = {
     "深夜":     "用随性、平静、毫无修饰的自然语调朗读，像是在私底下和老朋友聊天。语气诚恳、谦逊，不要播音腔。",
 }
 
+# 声音设计预设（用文字描述创造声线）
+DESIGN_PRESETS = {
+    "睡前催眠": {
+        "voice": "温和缓慢的催眠师声线，中年男性，声音低沉而温暖，带有一丝沙哑的质感。语速极慢，每个字都像是在引导呼吸。",
+        "style": "用极其缓慢、平稳的语调朗读，像是在引导冥想。在句号处做长停顿，给听众留出呼吸的空间。声音越来越轻，像在把人慢慢带入梦乡。不要有任何突然的音量变化。",
+    },
+    "冥想引导": {
+        "voice": "空灵、安宁的冥想导师声线，中性偏柔，声音像从远处传来。声线清晰但不锐利，带有温暖的回响感。",
+        "style": "非常缓慢且有节奏地朗读，每句话之间留出充足停顿。语气平和而专注，像是在引导一次身体扫描。不要有情绪起伏，保持恒定的安宁感。",
+    },
+    "深夜电台": {
+        "voice": "磁性、醇厚的深夜电台男声，30岁左右，声线温暖而有质感。像在深夜对着麦克风轻轻说话。",
+        "style": "用低沉、缓慢的语气朗读，像是在深夜独自对着听众说话。语速比正常稍慢，偶尔带点随性的停顿和轻微的呼吸声。亲切但不亲密，温暖但不煽情。",
+    },
+    "温柔叙述": {
+        "voice": "温暖知性的女声，30岁左右，声音柔和而有力量。像一位温柔的姐姐在讲故事。",
+        "style": "用柔和、亲切的语气朗读，语速适中偏慢。情感自然流露，不做作。在关键处可以稍作停顿，给听众消化的时间。",
+    },
+}
+
 # ============================================================
 # 工具函数
 # ============================================================
@@ -209,6 +229,25 @@ def _download_gutenberg(url, book_id, title):
         return None, f"下载失败: {e}"
 
 
+def build_voice_design_payload(text, design_desc, style_prompt, speed=1.0, out_fmt="mp3"):
+    """构造声音设计请求 payload — 用文字描述创造声线，无需参考音频"""
+    user_content = design_desc
+    if style_prompt:
+        user_content = f"{design_desc}\n\n朗读风格：{style_prompt}"
+    return {
+        "model": "mimo-v2.5-tts-voicedesign",
+        "messages": [
+            {"role": "user", "content": user_content},
+            {"role": "assistant", "content": text},
+        ],
+        "audio": {
+            "format": out_fmt,
+            "speed": speed,
+            "optimize_text_preview": True,
+        }
+    }
+
+
 def build_voice_clone_payload(text, ref_audio_path, prompt, speed=1.0, out_fmt="mp3"):
     """构造声音克隆请求 payload"""
     with open(ref_audio_path, "rb") as f:
@@ -258,11 +297,16 @@ def call_tts(text, index, api_key, temp_dir, mode, **kwargs):
     通用 TTS 调用入口。
     mode='tts':    kwargs 需含 voice_id, speed
     mode='clone':  kwargs 需含 ref_audio, prompt, speed
+    mode='design': kwargs 需含 design_desc, style_prompt, speed
     """
     if mode == "clone":
         url = CLONE_API_URL
         payload = build_voice_clone_payload(text, kwargs["ref_audio"], kwargs["prompt"],
                                             kwargs.get("speed", 1.0))
+    elif mode == "design":
+        url = TTS_API_URL
+        payload = build_voice_design_payload(text, kwargs["design_desc"], kwargs.get("style_prompt"),
+                                             kwargs.get("speed", 1.0))
     else:
         url = TTS_API_URL
         payload = build_tts_payload(text, kwargs["voice_id"], kwargs.get("speed", 1.0))
@@ -364,12 +408,17 @@ def final_merge(volumes, output_path, temp_dir):
 
 def build_parser():
     p = argparse.ArgumentParser(
-        description="BookBuddy · AI读书伴侣 — 文本转高质量有声书（支持基础TTS / 声音克隆）",
+        description="BookBuddy · AI读书伴侣 — 文本转高质量有声书（支持基础TTS / 声音设计 / 声音克隆）",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 模式示例:
-  # 基础 TTS（预制音色）
+  # 基础 TTS（内置音色：冰糖/茉莉/苏打/白桦/Mia/Chloe/Milo/Dean）
   python generate_audio.py 书.md
+  python generate_audio.py 书.md -v 茉莉
+
+  # 声音设计（用文字描述创造你要的声线，无需参考音频）
+  python generate_audio.py 书.md --voice-design "低沉磁性的中年男声，像深夜电台主播"
+  python generate_audio.py 书.md --voice-design "温暖知性的女声，语速平缓，像在讲故事"
 
   # 声音克隆（零样本克隆）
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3
@@ -394,8 +443,12 @@ def build_parser():
     p.add_argument("--download-only", action="store_true",
                    help="只下载书籍到 txt，不生成音频")
     p.add_argument("--voice-clone", action="store_true",
-                   help="启用声音克隆模式（默认: 基础 TTS）")
+                   help="启用声音克隆模式")
     p.add_argument("--ref-audio", help="声音克隆参考音频路径")
+    p.add_argument("--voice-design", default=None,
+                   help="声音设计：用文字描述创造声线，如'低沉磁性的中年男声'（使用 voicedesign 模型）")
+    p.add_argument("--design-prompt", default=None,
+                   help="声音设计朗读风格提示（可选），如'用平静沉稳的语气朗读'")
 
     # 音色 / 风格
     p.add_argument("-v", "--voice", default=None,
@@ -472,7 +525,7 @@ def main():
         output_path = os.path.abspath(args.output)
     else:
         base = os.path.splitext(input_path)[0]
-        suffix = "_clone" if args.voice_clone else ""
+        suffix = "_设计" if args.voice_design else "_克隆" if args.voice_clone else ""
         output_path = f"{base}{suffix}.mp3"
 
     output_dir = os.path.dirname(output_path) or "."
@@ -499,7 +552,23 @@ def main():
     max_len = 200 if args.fast else 100
     segments = split_text(text, max_len=max_len)
     speed = args.speed or (1.2 if args.fast else 1.0)
-    mode_label = "声音克隆" if args.voice_clone else "基础TTS"
+    if args.voice_design:
+        # 检查是否使用了预设
+        design_preset = DESIGN_PRESETS.get(args.voice_design)
+        if design_preset:
+            design_desc = design_preset["voice"]
+            style_prompt = design_preset["style"]
+            mode_label = f"声音设计（预设：{args.voice_design}）"
+        else:
+            design_desc = args.voice_design
+            style_prompt = args.design_prompt or ""
+            mode_label = "声音设计（自定义）"
+        if args.design_prompt and not design_preset:
+            style_prompt = args.design_prompt
+    elif args.voice_clone:
+        mode_label = "声音克隆"
+    else:
+        mode_label = "基础TTS"
     print(f"📊 分段: {len(segments)} 段 (≤{max_len}字), {mode_label}, {speed}x")
 
     # ---- 提示词 ----
@@ -510,9 +579,14 @@ def main():
             prompt_text = CLONE_PROMPTS.get(args.clone_prompt, CLONE_PROMPTS["有声书"])
         print(f"🎤 参考音频: {args.ref_audio}")
         print(f"🎤 朗读风格: {args.clone_prompt}")
+    elif args.voice_design:
+        print(f"🎨 声音设计: {design_desc}")
+        if style_prompt:
+            print(f"🎨 朗读风格: {style_prompt}")
+        prompt_text = ""
     else:
         prompt_text = ""
-        print(f"🎤 音色: {args.voice}")
+        print(f"🎤 音色: {args.voice or '默认（白桦/冰糖）'}")
 
     # ---- 批量合成 ----
     part_files = []
@@ -527,7 +601,10 @@ def main():
                 continue
 
             print(f"🎙️ [{idx}/{len(segments)}]", end="")
-            if args.voice_clone:
+            if args.voice_design:
+                result = call_tts(seg, idx, api_key, temp_dir, "design",
+                                  design_desc=design_desc, style_prompt=style_prompt, speed=speed)
+            elif args.voice_clone:
                 result = call_tts(seg, idx, api_key, temp_dir, "clone",
                                   ref_audio=args.ref_audio, prompt=prompt_text, speed=speed)
             else:

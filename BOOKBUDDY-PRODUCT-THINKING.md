@@ -1,7 +1,7 @@
 # BookBuddy · AI读书伴侣 — 产品思考记录
 
 > 记录于 2026-06-20 产品讨论
-> 从 `everything-to-podcast` 到 `BookBuddy` 的演化过程
+> 从旧名 `everything-to-podcast` 到 `BookBuddy`（中文名：AI读书伴侣）的演化过程
 
 ---
 
@@ -66,7 +66,7 @@ BookBuddy 的新链条：
 
 首先有一个引擎：
 
-- `everything-to-podcast` — 文本清洗、分片、TTS、合并的流水线引擎
+- `bookbuddy`（原名 `everything-to-podcast`）— 文本清洗、分片、TTS、合并的流水线引擎
 
 随后加入声音克隆能力，形成了「引擎层 + 声源层」的分离架构。
 
@@ -80,7 +80,7 @@ BookBuddy 的新链条：
 
 ```
 编排层                     ← 纯指令，无代码
-  ├── 引擎层 (everything-to-podcast)  ← 开源
+  ├── 引擎层 (bookbuddy)  ← 开源
   └── 声源层 (voice reference)        ← 私有
 ```
 
@@ -91,7 +91,7 @@ BookBuddy 的新链条：
 
 ### 阶段四：开源策略
 
-意识到 `everything-to-podcast` 作为通用引擎可以开源，但声源层（含参考音频）不能开源。
+意识到 `bookbuddy`（原名 `everything-to-podcast`）作为通用引擎可以开源，但声源层（含参考音频）不能开源。
 
 开源版剥离为：引擎（通用）+ 用户自备声音（录音5秒即可）
 
@@ -155,7 +155,7 @@ kokoro-tts 成功的原因：
 
 ```
 编排层                     ← 纯指令，变更频繁
-  ├── 引擎层 (everything-to-podcast)  ← 代码稳定
+  ├── 引擎层 (bookbuddy)  ← 代码稳定
   └── 声源层 (voice reference)        ← 参考音频+配置
 ```
 
@@ -165,7 +165,7 @@ kokoro-tts 成功的原因：
 
 ### 改名决策
 
-`everything-to-podcast` → `bookbuddy`
+`everything-to-podcast`（旧名）→ `bookbuddy`
 
 原因：
 1. "Podcast" 误导用户期待 AI 主持人节目，实际是逐字有声书
@@ -235,7 +235,7 @@ kokoro-tts 成功的原因：
 
 ### 当前状态
 
-- 只有一个开源项目：`everything-to-podcast`（将改名为 `bookbuddy`）
+- 只有一个开源项目：`bookbuddy`（原名 `everything-to-podcast`）
 - 已在 GitHub 推送
 - 0 Star，0 Issue
 

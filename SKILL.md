@@ -1,6 +1,6 @@
 ---
 name: bookbuddy
-description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转换为高质量有声书或播客音频。支持两种模式：AI代读模式（AI读完总结后生成播客）和直接转音频模式（全文逐字朗读）。当用户提到：有声书、播客、转音频、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、或者给你一本书/论文/文档让你读，都应使用此技能。"
+description: "将任何文本内容（PDF、EPUB、TXT、Markdown、网页）转换为高质量有声书音频。支持三种模式：基础TTS（内置音色）、声音设计（文字描述创造声线）、声音克隆。当用户提到：有声书、朗读、听书、TTS、text to speech、audio、audiobook、语音合成、耳朵阅读、眼睛疲劳、护眼阅读、或者给你一本书让你读，都应使用此技能。"
 ---
 
 # 万物播客 Everything-to-Podcast
