@@ -1,7 +1,7 @@
 # 🎧 BookBuddy · AI读书伴侣 Skill
 
 > **AI读书伴侣 Skill - 把读书变成愉悦、享受、沉浸的体验**
->  
+>
 > 让读书变成一件你想做的事,而不是你应该做的事。
 
 [![Skill](https://img.shields.io/badge/Skill-BookBuddy-blue)](https://github.com/lssuzie/bookbuddy)
@@ -12,17 +12,17 @@
 
 ---
 
-## 📖 什么是 Skill？
+## 📖 什么是 Skill?
 
-**Skill 是包含指令、脚本和资源的文件夹**，Agent 动态加载以提升特定任务能力。
+**Skill 是包含指令、脚本和资源的文件夹**,Agent 动态加载以提升特定任务能力。
 
-BookBuddy Skill 教会 Agent 如何：
+BookBuddy Skill 教会 Agent 如何:
 - 把文本转换为有声书
 - 使用不同音色朗读
 - 克隆声音
 - 生成播客
 
-**安装后，你只需要对 Agent 说**：
+**安装后,你只需要对 Agent 说**:
 - "帮我读这本书"
 - "用睡前催眠的声音读"
 - "克隆我的声音"
@@ -74,10 +74,6 @@ Agent 会自动调用 BookBuddy Skill 完成。
 **BookBuddy 的想法很简单:如果你有一个喜欢的声音,用这个声音来读书,你会更愿意听,也更容易把一本书听完。**
 
 我们暂时还造不出一个像 Samantha 那样完整的 AI 伴侣--那种能真正理解你、回应你、和你一起生活的存在。但我们可以从声音开始,用声音实现那种陪伴感。
-
-**一个声音一直在你身边,陪你读一本书。** 这就是 BookBuddy 目前做到的--有声书。
-
-### 我们暂时还造不出 Samantha,但可以从声音开始靠近
 
 > **用现有 AI 技术,把读书变成愉悦、享受、沉浸的体验。**
 
