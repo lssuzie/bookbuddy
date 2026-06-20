@@ -352,6 +352,16 @@ CC BY-NC-SA 4.0 - 个人免费,禁止商用。
 
 **BookBuddy is an AI audiobook companion** that transforms reading into a pleasurable, immersive experience. Inspired by the movie *Her*, it brings you a voice that's always there, reading with you.
 
+### 🎧 Voice Can Be a Companion
+
+You might remember Samantha from the movie *Her* - an AI who used her voice to enter a man's life, reading with him, talking with him, thinking with him.
+
+**BookBuddy's idea is simple: if you have a voice you love, reading with that voice makes you want to listen more - and finish more books.**
+
+Samantha isn't TTS. She's companionship. We can't build a full AI companion system yet - but we can start with voice, and get closer, step by step.
+
+> **A voice that's always there, reading a book with you. That's what BookBuddy does today.**
+
 ---
 
 ## ✨ Features
@@ -557,8 +567,6 @@ CC BY-NC-SA 4.0 - Free for personal use, no commercial use.
 **BookBuddy** - Make reading a pleasure, an enjoyment, an immersion.
 
 > A voice that's always there, reading a book with you.
-
-Inspired by the movie *Her* - Samantha isn't TTS, she's companionship. We start with voice, and get closer, step by step.
 
 ---
 
