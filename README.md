@@ -1,6 +1,8 @@
 # 🎧 BookBuddy · AI读书伴侣
 
-> **AI读书伴侣 — 让读书变成一件你想做的事，而不是你应该做的事。**
+> **AI读书伴侣 — 把读书变成愉悦、享受、沉浸的体验。**
+>
+> 让读书变成一件你想做的事，而不是你应该做的事。
 >
 > 把你喜欢的任何文本，用你喜欢的任何声音，做成有声书。
 
@@ -150,7 +152,9 @@ python3 generate_audio.py 你的书.txt --clean
 
 ## 🇺🇸 BookBuddy
 
-> **Your AI reading companion — Make reading something you *want* to do, not something you *should* do.**
+> **Your AI reading companion — Turn reading into pleasure, enjoyment, immersion.**
+>
+> Make reading something you *want* to do, not something you *should* do.
 >
 > Turn any text into an audiobook, in any voice you love.
 
