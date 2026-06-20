@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-万物播客 — 文本/Markdown 转高质量有声书 v2.1
+BookBuddy · AI读书伴侣 — 文本转高质量有声书 v2.1
 
 三种模式：
-  1. 基础 TTS（预制音色）：  默认，-v 白桦
+  1. 基础 TTS（预制音色）：  默认，无需额外参数
   2. 声音克隆（零样本克隆）： --voice-clone --ref-audio 参考.mp3
   3. 公版书下载+自动转：    --download 道德经
 
 一条命令搞定找书+转有声书：
-  python generate_audio.py --download 道德经 -v 白桦
+  python generate_audio.py --download 道德经 --clean
   python generate_audio.py --download 道德经 --voice-clone --ref-audio 我的声音.mp3
 
 支持所有模式共用：清洗、智能分片、断点续传、自动分卷、ffmpeg 合并
@@ -33,7 +33,7 @@ KNOWN_BOOKS = {
     "论语":     ["7337", "Analects of Confucius（英译）"],
     "analects":    ["7337", "The Analects"],
 }
-TTS_API_URL    = "https://token-plan-cn.xiaomimimo.com/v1/chat/completions"
+TTS_API_URL    = "https://api.xiaomimimo.com/v1/chat/completions"
 CLONE_API_URL  = "https://api.xiaomimimo.com/v1/chat/completions"
 
 # 声音克隆提示词预设
@@ -364,13 +364,12 @@ def final_merge(volumes, output_path, temp_dir):
 
 def build_parser():
     p = argparse.ArgumentParser(
-        description="万物播客 v2 — 文本转高质量有声书（支持基础TTS / 声音克隆）",
+        description="BookBuddy · AI读书伴侣 — 文本转高质量有声书（支持基础TTS / 声音克隆）",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 模式示例:
   # 基础 TTS（预制音色）
   python generate_audio.py 书.md
-  python generate_audio.py 书.md -v 女声少女 --fast
 
   # 声音克隆（零样本克隆）
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3
@@ -380,11 +379,10 @@ def build_parser():
   python generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考.mp3
 
   # 指定 API Key
-  MIMO_API_KEY=tp-xxx python generate_audio.py 书.md
+  MIMO_API_KEY=sk-xxx python generate_audio.py 书.md
 
   # 公版书籍下载 + 有声书（一步到位）
-  python generate_audio.py --download 道德经
-  python generate_audio.py --download 道德经 -o 道德经.mp3 -v 白桦
+  python generate_audio.py --download 道德经 --clean
   python generate_audio.py --download 道德经 --voice-clone --ref-audio 我的声音.mp3
         """
     )
@@ -400,8 +398,8 @@ def build_parser():
     p.add_argument("--ref-audio", help="声音克隆参考音频路径")
 
     # 音色 / 风格
-    p.add_argument("-v", "--voice", default="白桦",
-                   help="基础TTS音色名称 (默认: 白桦)")
+    p.add_argument("-v", "--voice", default=None,
+                   help="基础TTS音色名称 (默认: Mimo 内置音色)")
     p.add_argument("--clone-prompt", default="有声书",
                    choices=list(CLONE_PROMPTS.keys()) + ["自定义"],
                    help="声音克隆朗读风格 (默认: 有声书)")

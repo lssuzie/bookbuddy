@@ -1,4 +1,4 @@
-# BookBuddy · AI悦读 — 产品思考记录
+# BookBuddy · AI读书伴侣 — 产品思考记录
 
 > 记录于 2026-06-20 产品讨论
 > 从 `everything-to-podcast` 到 `BookBuddy` 的演化过程

@@ -1,12 +1,12 @@
 # MiMo TTS 请求规范与最佳实践
 
-本参考文件适用于在 `pdf-to-audiobook` 技能中使用 MiMo TTS 模型进行高保真有声书音频合成时的配置与接口规范。
+本参考文件适用于在 BookBuddy 中使用 MiMo TTS 模型进行高保真有声书音频合成时的配置与接口规范。
 
 ## 1. 接口配置
 
-* **接口地址 (Base URL)**：`https://token-plan-cn.xiaomimimo.com/v1/chat/completions` (针对 `tp-` 前缀 API Key)
-* **请求头**：`Authorization: Bearer tp-xxxx`
-* **模型代码**：`mimo-v2.5-tts`
+* **接口地址 (Base URL)**：`https://api.xiaomimimo.com/v1/chat/completions`
+* **请求头**：`Authorization: Bearer sk-xxxx` (`sk-` 前缀 API Key)
+* **模型代码**：`mimo-v2.5-tts`（基础 TTS）/ `mimo-v2.5-tts-voiceclone`（声音克隆）
 
 ## 2. 请求 Payload 示例
 
