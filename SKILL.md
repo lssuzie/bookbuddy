@@ -71,7 +71,7 @@ python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考音
 python3 scripts/generate_audio.py my_book.md --voice-clone --ref-audio 参考.mp3 --clone-prompt 标准流利
 
 # 完整流程：清洗+克隆+分卷
-python3 scripts/generate_audio.py 书.txt --clean --voice-clone --ref-audio 梁朝伟_普通话参考.mp3 -o 书_有声书.mp3
+python3 scripts/generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考音频.mp3 -o 书_有声书.mp3
 ```
 
 #### 模式三：搜索公版书 + 一键生成
