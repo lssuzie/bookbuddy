@@ -1,13 +1,46 @@
 ---
 name: bookbuddy
-description: "AI 读书伴侣 Skill - 把文本转换为有声书。支持内置音色、声音设计、声音克隆三种模式。"
+description: "AI 读书伴侣 Skill - 把文本转换为有声书。支持内置音色、声音设计、声音克隆、AI 代读播客。"
 ---
 
 # BookBuddy · AI 读书伴侣 Skill
 
 > **把读书变成愉悦、享受、沉浸的体验。**
 
-**这是一个 Skill/Plugin**，让你的 AI Agent 具备文本转语音能力。
+**这是一个 Skill**，让你的 AI Agent 具备文本转语音能力。
+
+## Skill 是什么？
+
+Skill 是包含指令、脚本和资源的文件夹，Agent 动态加载以提升特定任务能力。BookBuddy Skill 教会 Agent 如何：
+- 把文本转换为有声书
+- 使用不同音色朗读
+- 克隆声音
+- 生成播客
+
+## 安装方式
+
+### Claude Code
+```bash
+/plugin install bookbuddy
+```
+
+### Claude.ai
+直接在平台设置中上传 Skill 文件夹。
+
+### Claude API
+通过 Skills API 上传自定义技能。
+
+### Coze / Dify / GPTs
+参考 `coze-plugin/DEPLOY.md` 部署指南。
+
+## 使用方式
+
+安装后，你只需要对 Agent 说：
+- "帮我读这本书"
+- "用睡前催眠的声音读"
+- "克隆我的声音"
+
+Agent 会自动调用 BookBuddy Skill 完成。
 
 ## 核心能力
 

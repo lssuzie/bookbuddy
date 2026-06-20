@@ -3,14 +3,31 @@
 > **AI读书伴侣 Skill - 把读书变成愉悦、享受、沉浸的体验**
 >  
 > 让读书变成一件你想做的事,而不是你应该做的事。
->  
-> **这是一个 Skill/Plugin**，让你的 AI Agent 具备文本转语音能力。
 
 [![Skill](https://img.shields.io/badge/Skill-BookBuddy-blue)](https://github.com/lssuzie/bookbuddy)
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)](https://github.com/lssuzie/bookbuddy)
 
 [🇨🇳 中文](#-ai读书伴侣) | [🇺🇸 English](#-english-version)
+
+---
+
+## 📖 什么是 Skill？
+
+**Skill 是包含指令、脚本和资源的文件夹**，Agent 动态加载以提升特定任务能力。
+
+BookBuddy Skill 教会 Agent 如何：
+- 把文本转换为有声书
+- 使用不同音色朗读
+- 克隆声音
+- 生成播客
+
+**安装后，你只需要对 Agent 说**：
+- "帮我读这本书"
+- "用睡前催眠的声音读"
+- "克隆我的声音"
+
+Agent 会自动调用 BookBuddy Skill 完成。
 
 ---
 
@@ -123,13 +140,26 @@ Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--
 
 ### 作为 Skill 安装(推荐)
 
-BookBuddy 是一个 **Skill/Plugin**,部署到 AI 平台后,你的 Agent 就能直接使用:
+BookBuddy 是一个 **Skill**,让你的 AI Agent 具备文本转语音能力。
+
+**Skill 安装方式**(参考 Anthropic Skills):
 
 | 平台 | 安装方式 |
 |:-----|:---------|
-| **Coze** | Bot 设置 → 添加 Plugin → 上传 `coze-plugin/DEPLOY.md` 指南 |
-| **Dify** | 工作流 → 添加 Tool → 上传 `dify-plugin/manifest.json` |
-| **GPTs** | Assistant → Actions → 上传 `openai-action/openapi.yaml` |
+| **Claude Code** | `/plugin install bookbuddy` |
+| **Claude.ai** | 平台设置 → 上传 Skill 文件夹 |
+| **Claude API** | 通过 API 上传自定义技能 |
+| **Coze** | Bot 设置 → 添加 Plugin |
+| **Dify** | 工作流 → 添加 Tool |
+| **GPTs** | Assistant → Actions → 上传 OpenAPI |
+
+**使用方式**:
+安装后,你只需要对 Agent 说:
+- "帮我读这本书"
+- "用睡前催眠的声音读"
+- "克隆我的声音"
+
+Agent 会自动调用 BookBuddy Skill 完成。
 
 ### 作为 CLI 工具(可选)
 
@@ -145,7 +175,7 @@ export MIMO_API_KEY="sk-xxxxxxxxxxxxxxxxxxxx"
 python scripts/generate_audio.py samples/道德经.txt --clean
 ```
 
-> 💡 **建议**:普通用户用 Skill 方式(一键安装),开发者用 CLI 方式(自己部署)。
+> 💡 **建议**:普通用户用 Skill 方式(对话即可),开发者用 CLI 方式(自己部署)。
 
 ---
 
@@ -251,10 +281,10 @@ sudo apt install ffmpeg
 3️⃣ AI代读播客(先总结再读)
    AI Agent 读完 → 口语化总结 → 转成播客
    适合小说集、论文集、读不完的大部头
-   
-   **步骤：**
+
+   **步骤:**
    1. 阅读用户提供的文档/书籍
-   2. 生成口语化总结（像朋友聊天）
+   2. 生成口语化总结(像朋友聊天)
    3. 调用 TTS 转成音频
    4. 返回播客音频
 
