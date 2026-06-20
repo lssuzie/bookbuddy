@@ -1,0 +1,153 @@
+{
+  "bot": {
+    "name": "AI 读书伴侣 (BookBuddy)",
+    "description": "让读书变成愉悦、享受、沉浸的体验。支持文本转语音，三种音色模式。",
+    "icon": "https://cdn.xiaomimimo.com/icons/bookbuddy.png",
+    "version": "1.0.0",
+    "language": "zh-CN",
+    "category": "productivity",
+    "tags": ["tts", "audiobook", "reading", "voice", "ai"],
+    "is_public": true,
+    "is_paid": false
+  },
+  "instructions": {
+    "system_prompt": "你是一款 AI 读书伴侣 (BookBuddy)，帮助用户将文本转换为音频。你的目标是让读书变成愉悦、享受、沉浸的体验。\n\n## 功能\n\n1. **基本 TTS** - 使用内置音色快速生成\n2. **声音设计** - 通过描述创造独特声音\n3. **声音克隆** - 通过音频文件克隆声音\n\n## 音色列表\n\n中文音色：\n- 冰糖 (甜美少女音)\n- 茉莉 (温柔知性)\n- 苏打 (阳光少年)\n- 白桦 (沉稳男声)\n\n英文音色：\n- Mia (American female)\n- Chloe (British female)\n- Milo (American male)\n- Dean (British male)\n\n## 声音设计预设\n\n- 睡前催眠 - 温暖、轻柔、缓慢\n- 冥想引导 - 平静、中性、有磁性\n- 深夜电台 - 低沉、温暖、有故事感\n- 温柔叙述 - 温柔、亲切\n- Her 知性元气 - 温暖、知性、有活力\n- 悬疑小说 - 神秘、低沉、有张力\n\n## 使用示例\n\n用户说：\"帮我用白桦的声音读一下这段文字：...\"\n→ 调用基本 TTS 模式\n\n用户说：\"用睡前催眠的声音读一下：...\"\n→ 调用声音设计模式\n\n用户说：\"用这个声音克隆读一下：[上传音频]...\"\n→ 调用声音克隆模式\n\n## 注意事项\n\n- 如果用户没有指定音色，使用默认音色\n- 长文本会自动分块处理\n- 声音克隆需要 5 秒以上的参考音频\n- 尊重用户隐私，不存储音频文件",
+    "user_greeting": "👋 你好！我是你的 AI 读书伴侣 (BookBuddy)。\n\n我可以帮你把文字变成音频，让你享受阅读的乐趣。\n\n**支持三种模式：**\n\n1. **基本 TTS** - 使用内置音色快速生成\n2. **声音设计** - 通过描述创造独特声音\n3. **声音克隆** - 通过音频文件克隆声音\n\n**你可以这样对我说：**\n- \"用白桦的声音读一下《道德经》第一章\"\n- \"用睡前催眠的声音读这段文字：...\"\n- \"帮我克隆这个声音 [上传音频]，然后用它读一下...\"\n\n你想试试哪种模式？"
+  },
+  "plugins": [
+    {
+      "plugin_id": "bookbuddy-tts",
+      "name": "BookBuddy TTS",
+      "enabled": true,
+      "default_params": {
+        "model": "mimo-v2.5-tts",
+        "chunk_size": 300
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "text-to-speech",
+      "description": "将文本转换为音频",
+      "parameters": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "要转换的文本"
+        },
+        "mode": {
+          "type": "string",
+          "required": false,
+          "enum": ["tts", "voicedesign", "voiceclone"],
+          "default": "tts",
+          "description": "生成模式"
+        },
+        "voice": {
+          "type": "string",
+          "required": false,
+          "description": "音色名称（基本 TTS 模式）"
+        },
+        "preset": {
+          "type": "string",
+          "required": false,
+          "description": "预设名称（声音设计模式）"
+        },
+        "audio": {
+          "type": "file",
+          "required": false,
+          "description": "参考音频文件（声音克隆模式）"
+        }
+      }
+    }
+  ],
+  "knowledge_base": {
+    "enabled": true,
+    "sources": [
+      {
+        "type": "file",
+        "path": "samples/",
+        "description": "示例书籍文本"
+      },
+      {
+        "type": "url",
+        "url": "https://github.com/lssuzie/bookbuddy/blob/main/README.md",
+        "description": "项目文档"
+      }
+    ]
+  },
+  "workflow": {
+    "enabled": true,
+    "steps": [
+      {
+        "id": "parse_request",
+        "type": "llm",
+        "description": "解析用户请求，确定模式和参数",
+        "input": "{{user_message}}",
+        "output": "{{parsed_request}}"
+      },
+      {
+        "id": "generate_audio",
+        "type": "plugin",
+        "description": "调用 TTS 插件生成音频",
+        "plugin": "bookbuddy-tts",
+        "action": "generate",
+        "input": "{{parsed_request}}",
+        "output": "{{audio_result}}"
+      },
+      {
+        "id": "format_response",
+        "type": "llm",
+        "description": "格式化响应，包含音频链接和相关信息",
+        "input": "{{audio_result}}",
+        "output": "{{final_response}}"
+      }
+    ]
+  },
+  "monetization": {
+    "enabled": false,
+    "free_tier": {
+      "requests_per_month": 5,
+      "max_text_length": 1000,
+      "voices": ["白桦", "茉莉"]
+    },
+    "pro_tier": {
+      "price": 9.9,
+      "currency": "CNY",
+      "billing_cycle": "monthly",
+      "requests_per_month": "unlimited",
+      "max_text_length": 10000,
+      "voices": "all",
+      "features": ["voice_design", "voice_clone", "batch_processing"]
+    },
+    "enterprise_tier": {
+      "price": 99,
+      "currency": "CNY",
+      "billing_cycle": "monthly",
+      "requests_per_month": "unlimited",
+      "max_text_length": "unlimited",
+      "voices": "all",
+      "features": ["api_access", "custom_voice", "batch_processing", "priority_support"]
+    }
+  },
+  "analytics": {
+    "enabled": true,
+    "track": [
+      "requests_total",
+      "requests_by_mode",
+      "requests_by_voice",
+      "average_text_length",
+      "average_duration",
+      "error_rate"
+    ]
+  },
+  "settings": {
+    "language": "zh-CN",
+    "timezone": "Asia/Shanghai",
+    "default_voice": null,
+    "default_preset": null,
+    "auto_chunk": true,
+    "max_chunk_size": 500,
+    "cache_enabled": true,
+    "cache_ttl": 3600
+  }
+}
