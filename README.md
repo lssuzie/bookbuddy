@@ -27,6 +27,10 @@
 
 **BookBuddy 的想法很简单:如果你有一个喜欢的声音,用这个声音来读书,你会更愿意听,也更容易把一本书听完。**
 
+我们暂时还造不出一个像 Samantha 那样完整的 AI 伴侣--那种能真正理解你、回应你、和你一起生活的存在。但我们可以从声音开始,用声音实现那种陪伴感。
+
+**一个声音一直在你身边,陪你读一本书。** 这就是 BookBuddy 目前做到的--有声书。
+
 读书的障碍从来不是书本身,是"开始读"的那一步。把读书变成听觉体验,把"应该读"变成"想听"。
 
 - 眼睛累了的人可以让耳朵上岗
@@ -34,11 +38,11 @@
 - 阅读困难的人可以换成听觉输入
 - 学英语的人可以用喜欢的声音练听力
 
-### 我们造不出 Samantha,但我们可以一步一步靠近
+### 我们暂时还造不出 Samantha,但可以从声音开始靠近
 
 > **用现有 AI 技术,把读书变成愉悦、享受、沉浸的体验。**
 
-Samantha 不是 TTS,她是陪伴。我们造不出她--但我们可以一步一步靠近。
+Samantha 不是 TTS,她是陪伴。完整的 AI 伴侣系统我们还造不出--但我们可以从声音开始,一步一步靠近。一个声音一直在你身边,陪你读一本书。这就是 BookBuddy 目前做到的。
 
 ### 三种模式,三种声音来源
 
@@ -184,6 +188,10 @@ You might remember Samantha from the movie *Her* — an AI who used her voice to
 
 **BookBuddy's idea is simple: if you have a voice you love, reading with that voice makes you want to listen more — and finish more books.**
 
+We can't build a full Samantha-like AI companion yet — an AI that truly understands you, responds to you, and lives with you. But we can start with voice, and use voice to create that sense of companionship.
+
+**A voice that's always there, reading a book with you.** That's what BookBuddy does today — audiobooks.
+
 The barrier to reading is never the book itself. It's that first step of "starting to read." Turn reading into a listening experience, turn "I should read" into "I want to listen."
 
 - When your eyes are tired, let your ears take over
@@ -191,11 +199,11 @@ The barrier to reading is never the book itself. It's that first step of "starti
 - If you have reading difficulties, switch to audio input
 - If you're learning English, practice with a voice you love
 
-### We can't build Samantha, but we can get closer
+### We can't build Samantha yet, but we can start with voice
 
 > **Use existing AI technology to make reading a pleasure, an enjoyment, an immersion.**
 
-Samantha isn't TTS. She's companionship. We can't build her — but we can get closer, step by step.
+Samantha isn't TTS. She's companionship. We can't build a full AI companion system yet — but we can start with voice, and get closer, step by step. A voice that's always there, reading a book with you. That's what BookBuddy does today.
 
 ### Three modes, three ways to get your voice
 
