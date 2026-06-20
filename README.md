@@ -7,6 +7,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/lssuzie/bookbuddy.svg?style=flat-square)](https://github.com/lssuzie/bookbuddy/stargazers)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)](https://github.com/lssuzie/bookbuddy)
 
+[🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+
 ---
 
 ## 📖 简介
@@ -237,6 +239,14 @@ CC BY-NC-SA 4.0 - 个人免费，禁止商用。
 
 ---
 
+<div align="center">
+
+[回到顶部 ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+
+</div>
+
+---
+
 # 🇺🇸 English Version
 
 ## 📖 What is BookBuddy?
@@ -450,3 +460,11 @@ CC BY-NC-SA 4.0 - Free for personal use, no commercial use.
 > A voice that's always there, reading a book with you.
 
 Inspired by the movie *Her* - Samantha isn't TTS, she's companionship. We start with voice, and get closer, step by step.
+
+---
+
+<div align="center">
+
+[Back to Top ↑](#-bookbuddy--ai读书伴侣) | [🇨🇳 中文](#-简介) | [🇺🇸 English](#-english-version)
+
+</div>
