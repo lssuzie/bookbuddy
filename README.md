@@ -142,7 +142,7 @@ python generate_audio.py 书.txt --voice-design "元气明亮的少年音" \
 
 - Python 3.8+
 - ffmpeg (for audio merging)
-- Mimo API Key ([get free credits](https://100t.xiaomimimo.com/))
+- Mimo API Key ([get free credits](https://platform.xiaomimimo.com/token-plan))
 
 ### Installation | 安装
 
@@ -213,7 +213,7 @@ bookbuddy/
 
 BookBuddy 目前使用 **Mimo TTS** 作为后端引擎:
 
-1. 去 [100t.xiaomimimo.com](https://100t.xiaomimimo.com/) 注册
+1. 去 [platform.xiaomimimo.com/token-plan](https://platform.xiaomimimo.com/token-plan) 注册
 2. 复制你的 API Key(`sk-` 开头)
 3. 配置到环境变量:
    ```bash
@@ -338,7 +338,7 @@ CC BY-NC-SA 4.0 - Free for personal use, no commercial use.
 
 - **GitHub**: https://github.com/lssuzie/bookbuddy
 - **Issues**: https://github.com/lssuzie/bookbuddy/issues
-- **Mimo API**: https://100t.xiaomimimo.com/
+- **Mimo API**: https://platform.xiaomimimo.com/token-plan
 - **Documentation**: https://github.com/lssuzie/bookbuddy/tree/main/references
 
 ---

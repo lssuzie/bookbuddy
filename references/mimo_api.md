@@ -4,6 +4,7 @@
 
 ## 1. 接口配置
 
+* **注册页面**：[platform.xiaomimimo.com/token-plan](https://platform.xiaomimimo.com/token-plan)
 * **接口地址 (Base URL)**：`https://api.xiaomimimo.com/v1/chat/completions`
 * **请求头**：`Authorization: Bearer sk-xxxx` (`sk-` 前缀 API Key)
 * **模型代码**：`mimo-v2.5-tts`（基础 TTS）/ `mimo-v2.5-tts-voiceclone`（声音克隆）
