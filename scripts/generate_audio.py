@@ -317,9 +317,8 @@ def build_tts_payload(text, voice_id, speed=1.0, out_fmt="mp3"):
     optimized = text.replace("。", "。， ")
     speed_ins = "语速加快到1.2倍。" if speed == 1.2 else ""
     user_prompt = (
-        f"请用男声{voice_id}朗读以下文字。注意：你的声音要磁性好听，"
-        f"同时请注入丰富且生动的感情，避免平淡无奇。请使用极其标准且规范的普通话，"
-        f"吐字要清晰有力、字字分明，避免任何含糊或吞音，不带口音。"
+        f"请用{voice_id}的声音朗读以下文字。"
+        f"注入丰富且生动的感情，避免平淡无奇。吐字清晰有力、字字分明，避免含糊或吞音。"
         f"{speed_ins}在句号等标点处，请保持清晰、较长且自然的停顿。"
     )
     return {
@@ -524,6 +523,8 @@ def build_parser():
     p.add_argument("--temp-dir", help="临时文件目录")
     p.add_argument("--no-cleanup", action="store_true",
                    help="保留临时分段文件")
+    p.add_argument("--max-segments", type=int, default=None,
+                   help="最多处理 N 段（用于测试）")
     return p
 
 
@@ -613,6 +614,8 @@ def main():
         default_chunk = 300
     max_len = args.chunk_size or (200 if args.fast else default_chunk)
     segments = split_text(text, max_len=max_len)
+    if args.max_segments:
+        segments = segments[:args.max_segments]
     speed = args.speed or (1.2 if args.fast else 1.0)
     
     # ---- 提示词准备 ----
@@ -667,8 +670,6 @@ def main():
 
             if result:
                 part_files.append(result)
-                # 每生成一段检查是否可以合并分卷
-                merge_volumes(temp_dir, len(segments), output_dir, book_name)
             else:
                 print(f"  ⚠️ [{idx}] 跳过")
 

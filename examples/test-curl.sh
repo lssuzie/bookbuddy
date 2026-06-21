@@ -50,8 +50,8 @@ curl -X POST "${BASE_URL}/chat/completions" \
   }' | jq '.'
 echo ""
 
-# 3. 声音设计 (睡前催眠)
-echo "📌 Test 3: Voice Design (睡前催眠)"
+# 3. 声音设计 (温柔私语 - BookBuddy 灵魂声线 👑)
+echo "📌 Test 3: Voice Design (温柔私语)"
 echo "----------------------------------------"
 curl -X POST "${BASE_URL}/chat/completions" \
   -H "Authorization: Bearer ${API_KEY}" \
@@ -64,12 +64,12 @@ curl -X POST "${BASE_URL}/chat/completions" \
         "content": "闭上眼睛，深呼吸，让自己放松下来。"
       }
     ],
-    "preset": "睡前催眠"
+    "preset": "温柔私语"
   }' | jq '.'
 echo ""
 
-# 4. 声音设计 (Her 知性元气)
-echo "📌 Test 4: Voice Design (Her 知性元气)"
+# 4. 声音设计 (知识讲述)
+echo "📌 Test 4: Voice Design (知识讲述)"
 echo "----------------------------------------"
 curl -X POST "${BASE_URL}/chat/completions" \
   -H "Authorization: Bearer ${API_KEY}" \
@@ -82,7 +82,7 @@ curl -X POST "${BASE_URL}/chat/completions" \
         "content": "今天我们来聊聊《人类简史》中的有趣观点。"
       }
     ],
-    "preset": "Her 知性元气"
+    "preset": "知识讲述"
   }' | jq '.'
 echo ""
 

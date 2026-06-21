@@ -1,14 +1,5 @@
 __pycache__/
 
-# Platform submission materials (for Coze/Dify/GPTs Store)
-# These are used for platform submission, not for GitHub
-dify-plugin/
-openai-action/
-coze-plugin/openapi.yaml
-coze-plugin/main.py
-coze-plugin/bot-config.json
-coze-plugin/requirements.txt
-
 # Test outputs
 test_output/
 
