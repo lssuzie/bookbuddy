@@ -92,7 +92,7 @@ Agent 会自动调用 BookBuddy Skill 完成。
 | **冥想引导** | 冥想音频 |
 | **深夜电台** | 电台节目 |
 | **温柔叙述** | 小说朗读 |
-| **Her 知性元气** | 知识分享 |
+| **Her 知性元气** | 一切——BookBuddy 的灵魂声线 |
 | **悬疑小说** | 悬疑推理 |
 
 ---
@@ -219,7 +219,7 @@ Install the BookBuddy skill. Clone https://github.com/lssuzie/bookbuddy to ~/.cl
 | **Meditation** | Meditation audio |
 | **Late Night Radio** | Radio shows |
 | **Gentle Narrative** | Novels |
-| **Her Energy** | Knowledge sharing |
+| **Her Vitality** | Everything — BookBuddy's soul voice |
 | **Suspense** | Mystery novels |
 
 ---
