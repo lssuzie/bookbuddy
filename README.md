@@ -83,14 +83,14 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 
 ### 声音设计预设
 
-| 名称 | 声线 | 适合 |
-|:-----|:-----|:-----|
-| **温柔私语** 👑 | 温暖沙哑，贴耳私语 | BookBuddy 灵魂声线 |
-| **知识讲述** | 沉稳清晰，像老师在娓娓道来 | 知识阅读 |
-| **故事演绎** | 有戏剧张力，能演绎情绪 | 小说故事 |
-| **播客主持** | 自然亲切，像朋友在聊天 | 播客 |
-| **睡前陪伴** | 温柔缓慢，越来越轻 | 睡前 |
-| **冥想引导** | 空灵安宁，像从远处传来 | 冥想 |
+| 名称 | 声线 |
+|:-----|:-----|
+| **温柔私语** 👑 | 温暖沙哑，贴耳私语 |
+| **知识讲述** | 沉稳清晰，像老师在娓娓道来 |
+| **故事演绎** | 有戏剧张力，能演绎情绪 |
+| **播客主持** | 自然亲切，像朋友在聊天 |
+| **睡前陪伴** | 温柔缓慢，越来越轻 |
+| **冥想引导** | 空灵安宁，像从远处传来 |
 
 先试 **温柔私语** 👑，不满意再换。
 
@@ -212,14 +212,14 @@ Then say:
 
 ### Voice Design Presets
 
-| Name | Voice | Best For |
-|:-----|:------|:---------|
-| **Gentle Whisper** 👑 | Warm, husky, intimate | BookBuddy's soul voice |
-| **Knowledge Narration** | Steady, clear, authoritative | Knowledge reading |
-| **Story Performance** | Dramatic, emotional range | Novels & stories |
-| **Podcast Host** | Natural, conversational | Podcasts |
-| **Bedtime Companion** | Soft, slow, calming | Bedtime |
-| **Meditation Guide** | Ethereal, peaceful | Meditation |
+| Name | Voice |
+|:-----|:------|
+| **Gentle Whisper** 👑 | Warm, husky, intimate |
+| **Knowledge Narration** | Steady, clear, authoritative |
+| **Story Performance** | Dramatic, emotional range |
+| **Podcast Host** | Natural, conversational |
+| **Bedtime Companion** | Soft, slow, calming |
+| **Meditation Guide** | Ethereal, peaceful |
 
 Start with **Gentle Whisper** 👑. Switch anytime.
 
