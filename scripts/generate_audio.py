@@ -623,8 +623,9 @@ def main():
             style_prompt = design_preset["style"]
         else:
             design_desc = args.voice_design
-            style_prompt = args.design_prompt or ""
-        if args.design_prompt and not design_preset:
+            style_prompt = ""
+        if args.design_prompt:
+            # 覆盖风格描述，保留声音描述不变 → 同一个声音，不同演绎
             style_prompt = args.design_prompt
     elif args.voice_clone:
         if args.clone_prompt == "自定义" and args.clone_prompt_text:
