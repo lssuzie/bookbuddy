@@ -39,6 +39,7 @@ KNOWN_BOOKS = {
 }
 TTS_API_URL    = "https://api.xiaomimimo.com/v1/chat/completions"
 CLONE_API_URL  = "https://api.xiaomimimo.com/v1/chat/completions"
+TOKEN_PLAN_URL = "https://token-plan-cn.xiaomimimo.com/v1/chat/completions"
 
 # 声音克隆提示词预设
 CLONE_PROMPTS = {
@@ -335,6 +336,13 @@ def build_tts_payload(text, voice_id, speed=1.0, out_fmt="mp3"):
     }
 
 
+def _get_api_url(api_key):
+    """根据 API Key 前缀选择对应的 endpoint"""
+    if api_key.startswith("tp-"):
+        return TOKEN_PLAN_URL
+    return TTS_API_URL
+
+
 def call_tts(text, index, api_key, temp_dir, mode, **kwargs):
     """
     通用 TTS 调用入口。
@@ -342,16 +350,17 @@ def call_tts(text, index, api_key, temp_dir, mode, **kwargs):
     mode='clone':  kwargs 需含 ref_audio, prompt, speed
     mode='design': kwargs 需含 design_desc, style_prompt, speed
     """
+    base_url = _get_api_url(api_key)
     if mode == "clone":
-        url = CLONE_API_URL
+        url = base_url
         payload = build_voice_clone_payload(text, kwargs["ref_audio"], kwargs["prompt"],
                                             kwargs.get("speed", 1.0))
     elif mode == "design":
-        url = TTS_API_URL
+        url = base_url
         payload = build_voice_design_payload(text, kwargs["design_desc"], kwargs.get("style_prompt"),
                                              kwargs.get("speed", 1.0))
     else:
-        url = TTS_API_URL
+        url = base_url
         payload = build_tts_payload(text, kwargs["voice_id"], kwargs.get("speed", 1.0))
 
     out_path = os.path.join(temp_dir, f"part_{index:04d}.mp3")
