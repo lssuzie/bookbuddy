@@ -58,10 +58,12 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 
 然后你可以说：
 - "帮我读这本书"
-- "我想听梁朝伟读一本书"
+- "我想听林志玲读一本书"
 - "Karpathy 最近有什么新观点？帮我做成播客"
 - "读个故事给我听"
 - "睡前想听点东西"
+- "用我的声音来读这篇文字稿"
+- "用我的声音读莎士比亚"
 
 Agent 会自动理解你的意图，选好声音，直接开读。
 
