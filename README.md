@@ -69,7 +69,7 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 
 ### 听听效果
 
-同一个声音（**温柔私语** 👑 温暖磁性），三种场景：
+同一个声音（**温柔私语** 👑 年轻温暖磁性），三种场景：
 
 | 场景 | 试听 |
 |:-----|:-----|
@@ -218,7 +218,7 @@ Find your voice and use it for everything — reading papers, podcasts, English,
 
 ### Hear It in Action
 
-Same voice (**Gentle Whisper** 👑 warm, magnetic), three scenarios:
+Same voice (**Gentle Whisper** 👑 young, warm, magnetic), three scenarios:
 
 | Scenario | Listen |
 |:---------|:-------|
@@ -242,7 +242,7 @@ Same voice (**Gentle Whisper** 👑 warm, magnetic), three scenarios:
 
 | Name | Voice |
 |:-----|:------|
-| **Gentle Whisper** 👑 | Warm, magnetic, naturally intimate |
+| **Gentle Whisper** 👑 | Young, warm, naturally magnetic |
 | **Knowledge Narration** | Steady, clear, authoritative |
 | **Story Performance** | Dramatic, emotional range |
 | **Podcast Host** | Natural, conversational |
