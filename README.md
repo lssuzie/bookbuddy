@@ -69,15 +69,15 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 
 ### 听听效果
 
-用《道德经》开篇试听三种声音风格：
+同一个声音（**温柔私语** 👑），三种场景：
 
-| 声音 | 试听 |
+| 场景 | 试听 |
 |:-----|:-----|
-| **温柔私语** 👑 | <audio src="samples/demo-gentle-whisper.mp3" controls></audio> |
-| **知识讲述** | <audio src="samples/demo-knowledge.mp3" controls></audio> |
-| **故事演绎** | <audio src="samples/demo-story.mp3" controls></audio> |
+| 🎙️ 播客（1.1x 自然聊天） | <audio src="samples/demo-podcast.mp3" controls></audio> |
+| 📖 故事有声书（0.9x 有感情起伏） | <audio src="samples/demo-story.mp3" controls></audio> |
+| 🧘 冥想引导（0.7x 空灵安宁） | <audio src="samples/demo-meditation.mp3" controls></audio> |
 
-> 同一段文字，同一个声音引擎，只是演绎方式不同。
+> 同一个声音，不同的读法。速度变了，风格变了，但声音还是那个声音。
 
 ---
 
@@ -213,6 +213,20 @@ Then say:
 Find your voice and use it for everything — reading papers, podcasts, English, bedtime. Same voice, different delivery.
 
 > 💡 Not interested in choosing a voice? Just say what you want to hear. BookBuddy will pick the right voice for your content (e.g., "read the Tao Te Ching" → Knowledge Narration). Say "switch" if you don't like it.
+
+---
+
+### Hear It in Action
+
+Same voice (**Gentle Whisper** 👑), three scenarios:
+
+| Scenario | Listen |
+|:---------|:-------|
+| 🎙️ Podcast (1.1x, conversational) | <audio src="samples/demo-podcast.mp3" controls></audio> |
+| 📖 Storytelling (0.9x, emotional) | <audio src="samples/demo-story.mp3" controls></audio> |
+| 🧘 Meditation (0.7x, ethereal) | <audio src="samples/demo-meditation.mp3" controls></audio> |
+
+> Same voice, different delivery. Speed changes, style changes, but the voice stays the same.
 
 ---
 
