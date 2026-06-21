@@ -6,6 +6,7 @@ test_output/
 # Local development
 .DS_Store
 *.mp3
+!samples/demo-*.mp3
 *.wav
 *.m4a
 BOOKBUDDY-PRODUCT-THINKING.md

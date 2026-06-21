@@ -67,6 +67,20 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 
 ---
 
+### 听听效果
+
+用《道德经》开篇试听三种声音风格：
+
+| 声音 | 试听 |
+|:-----|:-----|
+| **温柔私语** 👑 | <audio src="samples/demo-gentle-whisper.mp3" controls></audio> |
+| **知识讲述** | <audio src="samples/demo-knowledge.mp3" controls></audio> |
+| **故事演绎** | <audio src="samples/demo-story.mp3" controls></audio> |
+
+> 同一段文字，同一个声音引擎，只是演绎方式不同。
+
+---
+
 ### 三种找声音的方式
 
 | 方式 | 怎么做 | 适合谁 |
