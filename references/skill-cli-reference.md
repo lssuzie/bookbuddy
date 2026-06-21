@@ -2,6 +2,24 @@
 
 > 供 Agent 调试或高级用户使用，常规场景不需要。
 
+## 核心用法：先找声音，再用它读一切
+
+```bash
+# 1. 找到你的声音（三选一）
+python3 generate_audio.py 书.txt -v 白桦                         # 内置音色
+python3 generate_audio.py 书.txt --voice-design "温柔私语"       # 声音设计
+python3 generate_audio.py 书.txt --voice-clone --ref-audio 参考.mp3 # 声音克隆
+
+# 2. 同一个声音，不同演绎方式（调速度 + 调风格）
+python3 generate_audio.py 论文.md --voice-design "温柔私语"           # 1.0x 正常速度
+python3 generate_audio.py 故事.md --voice-design "温柔私语" -s 0.9    # 0.9x 慢一点，有感情
+python3 generate_audio.py 播客.md --voice-design "温柔私语" -s 1.1    # 1.1x 快一点，像聊天
+python3 generate_audio.py 睡前.md --voice-design "温柔私语" -s 0.7    # 0.7x 更慢，哄睡
+
+# 3. 自定义演绎方式（声音不变，只变说话风格）
+python3 generate_audio.py 书.md --voice-design "温柔私语" --design-prompt "用沉稳专业的语气朗读"
+```
+
 ## 基本命令
 
 ```bash

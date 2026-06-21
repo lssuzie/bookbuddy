@@ -456,31 +456,32 @@ def build_parser():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 模式示例:
-  # 基础 TTS（内置音色：冰糖/茉莉/苏打/白桦/Mia/Chloe/Milo/Dean）
-  python generate_audio.py 书.md
-  python generate_audio.py 书.md -v 茉莉
+  # 先找到你的声音（三种方式）
+  python generate_audio.py 书.md -v 白桦                    # 内置音色，零准备
+  python generate_audio.py 书.md --voice-design "温柔私语"  # 声音设计（预设），BookBuddy 灵魂声线 👑
+  python generate_audio.py 书.md --voice-clone --ref-audio 我的声音.mp3  # 声音克隆
 
-  # 声音设计（用文字描述创造你要的声线，无需参考音频）
-  python generate_audio.py 书.md --voice-design "低沉磁性的中年男声，像深夜电台主播"
-  python generate_audio.py 书.md --voice-design "温暖知性的女声，语速平缓，像在讲故事"
-  python generate_audio.py 书.md --voice-design "温柔私语"  # 预设：略带沙哑的温暖女声，贴耳私语感，BookBuddy 默认灵魂声线
-  python generate_audio.py 书.md --voice-design "睡前催眠"    # 预设：温和缓慢的催眠声线
+  # 同一个声音，不同演绎方式（调速度 + 调风格）
+  python generate_audio.py 论文.md --voice-design "温柔私语"          # 正常速度读论文
+  python generate_audio.py 故事.md --voice-design "温柔私语" -s 0.9   # 慢一点读故事
+  python generate_audio.py podcast.md --voice-design "温柔私语" -s 1.1  # 快一点做播客
+  python generate_audio.py 睡前.md --voice-design "温柔私语" -s 0.7   # 更慢哄睡
 
-  # 声音克隆（零样本克隆）
+  # 自定义演绎方式（声音不变，只变风格）
+  python generate_audio.py 书.md --voice-design "温柔私语" --design-prompt "用极其沉稳、专业的语气朗读"
+
+  # 声音设计（用文字描述创造你要的声线）
+  python generate_audio.py 书.md --voice-design "温暖甜美有气质的女声，像知性偶像在娓娓道来"
+
+  # 声音克隆（零样本克隆）+ 不同朗读风格
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3
   python generate_audio.py 书.md --voice-clone --ref-audio 参考.mp3 --clone-prompt 标准流利
 
-  # 自定义分段长度（默认按模式自动调整：克隆100字 / TTS 300字 / 设计500字）
-  python generate_audio.py 书.md --voice-design "故事演绎" --chunk-size 1000  # 长段落更连贯
-
-  # 带文档清洗
-  python generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考.mp3
-
-  # 指定 API Key
-  MIMO_API_KEY=sk-xxx python generate_audio.py 书.md
-
-  # 公版书籍下载 + 有声书（一步到位）
-  python generate_audio.py --download 道德经 --clean
+  # 其他选项
+  python generate_audio.py 书.md --voice-design "故事演绎" --chunk-size 1000  # 自定义分段长度
+  python generate_audio.py 书.txt --clean --voice-clone --ref-audio 参考.mp3  # 带文档清洗
+  MIMO_API_KEY=sk-xxx python generate_audio.py 书.md                         # 指定 API Key
+  python generate_audio.py --download 道德经 --clean                           # 公版书下载+有声书
   python generate_audio.py --download 道德经 --voice-clone --ref-audio 我的声音.mp3
         """
     )
