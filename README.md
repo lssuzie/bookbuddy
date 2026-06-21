@@ -97,9 +97,18 @@ Agent 会自动理解你的意图，选好声音，直接开读。
 
 ### 安装方式
 
+**终端 AI 助手：**
+
+```bash
+npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
+```
+
+Claude Code、Codex、Hermes 等支持 shell 的 AI Agent 均可使用此命令安装。
+
+或者在 Claude.ai 等图形界面平台：
+
 | 平台 | 安装 |
 |:-----|:-----|
-| **Claude Code** | `/plugin marketplace add lssuzie/bookbuddy` |
 | **Claude.ai** | 平台设置 → 上传 Skill 文件夹 |
 | **Coze** | Bot 设置 → 添加 Plugin |
 | **Dify** | 工作流 → 添加 Tool |
@@ -216,9 +225,18 @@ Install the BookBuddy skill. Clone https://github.com/lssuzie/bookbuddy to ~/.cl
 
 ### Installation
 
+**Terminal AI assistants:**
+
+```bash
+npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
+```
+
+Works with Claude Code, Codex, Hermes, and any shell-capable AI agent.
+
+**Graphical platforms:**
+
 | Platform | How |
 |:---------|:----|
-| **Claude Code** | `/plugin marketplace add lssuzie/bookbuddy` |
 | **Claude.ai** | Upload Skill folder |
 | **Coze** | Add Plugin to Bot |
 | **Dify** | Add Tool to Workflow |
