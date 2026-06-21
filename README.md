@@ -80,11 +80,10 @@ Agent 会自动调用 BookBuddy Skill 完成。
 | 场景 | 推荐内置音色 | 或试试声音设计 |
 |:-----|:-----------|:--------------|
 | 📚 **知识阅读**（论文、教材、非虚构） | 白桦（沉稳磁性） | 温柔私语 👑 |
-| 📖 **小说/网文**（文学、故事、网文） | 茉莉（温柔知性） | 温柔叙述 |
+| 📖 **小说/网文**（文学、故事、网文） | 苏打（清爽活力，有演绎感） | 自定义戏剧感声线 |
 | 🗣️ **学英语**（英文文章、对话） | Mia / Chloe | — |
-| 🎙️ **播客**（先总结再生成播客） | 苏打（清爽活力） | 深夜电台 |
-| 😴 **睡前助眠** | 冰糖（清亮甜美） | 睡前催眠 |
-| 🧘 **冥想放松** | — | 冥想引导 |
+| 🎙️ **播客**（先总结再生成播客） | 苏打（清晰有活力）或 白桦（沉稳专业） | — |
+| 😴 **放松助眠**（睡前 + 冥想） | 冰糖（清亮甜美） | 睡前催眠 |
 
 > 👑 **温柔私语** — BookBuddy 的灵魂声线。温暖沙哑、贴耳私语，像她想到了什么，然后轻轻地说给你听。灵感来自电影 *Her*。
 
@@ -200,11 +199,10 @@ Install the BookBuddy skill. Clone https://github.com/lssuzie/bookbuddy to ~/.cl
 | Scenario | Try Built-in | Or Try Voice Design |
 |:---------|:-----------|:-------------------|
 | 📚 **Knowledge** (non-fiction, papers) | 白桦 (Steady) | Gentle Whisper 👑 |
-| 📖 **Novels / Web novels** | 茉莉 (Gentle) | Gentle Narrative |
+| 📖 **Novels / Web novels** | 苏打 (Sunny, energetic) | Custom dramatic voice |
 | 🗣️ **Learn English** | Mia / Chloe | — |
-| 🎙️ **Podcast** (summary → audio) | 苏打 (Sunny) | Late Night Radio |
-| 😴 **Bedtime** | 冰糖 (Sweet) | Bedtime Story |
-| 🧘 **Meditation** | — | Meditation |
+| 🎙️ **Podcast** (summary → audio) | 苏打 (Sunny) or 白桦 (Steady) | — |
+| 😴 **Relax & Sleep** (bedtime + meditation) | 冰糖 (Sweet) | Bedtime Story |
 
 > 👑 **Gentle Whisper** — BookBuddy's soul voice. Warm, husky, intimate whisper. Like she's telling you a story, just between the two of you. Inspired by the movie *Her*.", "oldText": "### Built-in Voices\n\n| Chinese | English |\n|:--------|:--------|\n| 冰糖 (Sweet) | Mia (Bright) |\n| 茉莉 (Gentle) | Chloe (Warm) |\n| 苏打 (Sunny) | Milo (Deep) |\n| 白桦 (Steady) | Dean (Calm) |\n\n---\n\n### Voice Design Presets\n\n| Preset | Best For |\n|:-------|:---------|\n| **Bedtime Story** | Sleep stories |\n| **Meditation** | Meditation audio |\n| **Late Night Radio** | Radio shows |\n| **Gentle Narrative** | Novels |\n| **Her Vitality** | Everything — BookBuddy's soul voice |\n| **Suspense** | Mystery novels |"}]
 
