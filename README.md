@@ -73,27 +73,21 @@ Agent 会自动调用 BookBuddy Skill 完成。
 
 ---
 
-### 内置音色
+### 场景 × 声音
 
-| 中文 | 英文 |
-|:-----|:-----|
-| 冰糖（清亮甜美） | Mia（Bright） |
-| 茉莉（温柔知性） | Chloe（Warm） |
-| 苏打（清爽活力） | Milo（Deep） |
-| 白桦（沉稳磁性） | Dean（Calm） |
+**想听什么？这里直接选：**
 
----
+| 场景 | 推荐内置音色 | 或试试声音设计 |
+|:-----|:-----------|:--------------|
+| 😴 睡前听书 | 茉莉（温柔知性） | 睡前催眠 |
+| ☀️ 清晨通勤 | 冰糖（清亮甜美） | Her 👑 |
+| 🌙 深夜独处 | 苏打（清爽活力） | 深夜电台 |
+| 📖 小说朗读 | 白桦（沉稳磁性） | 温柔叙述 |
+| 🕵️ 悬疑推理 | — | 悬疑小说 |
+| 🧘 冥想放松 | — | 冥想引导 |
+| 🗣️ 学英语 | Mia (Bright) / Chloe (Warm) | — |
 
-### 声音设计预设
-
-| 预设 | 适合 |
-|:-----|:-----|
-| **睡前催眠** | 睡前故事 |
-| **冥想引导** | 冥想音频 |
-| **深夜电台** | 电台节目 |
-| **温柔叙述** | 小说朗读 |
-| **Her 知性元气** | 一切——BookBuddy 的灵魂声线 |
-| **悬疑小说** | 悬疑推理 |
+> 👑 **Her** — 参考电影 *Her* 中 Scarlett Johansson 声线质感调出来的灵魂声线。温暖沙哑气息感，贴耳私语。适合一切。
 
 ---
 
@@ -200,27 +194,21 @@ Install the BookBuddy skill. Clone https://github.com/lssuzie/bookbuddy to ~/.cl
 
 ---
 
-### Built-in Voices
+### Scenarios × Voices
 
-| Chinese | English |
-|:--------|:--------|
-| 冰糖 (Sweet) | Mia (Bright) |
-| 茉莉 (Gentle) | Chloe (Warm) |
-| 苏打 (Sunny) | Milo (Deep) |
-| 白桦 (Steady) | Dean (Calm) |
+**What are you in the mood for?**
 
----
+| Scenario | Try Built-in | Or Try Voice Design |
+|:---------|:-----------|:-------------------|
+| 😴 Bedtime | 茉莉 (Gentle) | Bedtime Story |
+| ☀️ Morning commute | 冰糖 (Sweet) | Her 👑 |
+| 🌙 Late night | 苏打 (Sunny) | Late Night Radio |
+| 📖 Novels | 白桦 (Steady) | Gentle Narrative |
+| 🕵️ Mystery | — | Suspense |
+| 🧘 Meditation | — | Meditation |
+| 🗣️ Learn English | Mia / Chloe | — |
 
-### Voice Design Presets
-
-| Preset | Best For |
-|:-------|:---------|
-| **Bedtime Story** | Sleep stories |
-| **Meditation** | Meditation audio |
-| **Late Night Radio** | Radio shows |
-| **Gentle Narrative** | Novels |
-| **Her Vitality** | Everything — BookBuddy's soul voice |
-| **Suspense** | Mystery novels |
+> 👑 **Her** — Inspired by Scarlett Johansson's voice in *Her*. Warm, husky, breathy, intimate whisper. BookBuddy's soul voice. Fits everything.", "oldText": "### Built-in Voices\n\n| Chinese | English |\n|:--------|:--------|\n| 冰糖 (Sweet) | Mia (Bright) |\n| 茉莉 (Gentle) | Chloe (Warm) |\n| 苏打 (Sunny) | Milo (Deep) |\n| 白桦 (Steady) | Dean (Calm) |\n\n---\n\n### Voice Design Presets\n\n| Preset | Best For |\n|:-------|:---------|\n| **Bedtime Story** | Sleep stories |\n| **Meditation** | Meditation audio |\n| **Late Night Radio** | Radio shows |\n| **Gentle Narrative** | Novels |\n| **Her Vitality** | Everything — BookBuddy's soul voice |\n| **Suspense** | Mystery novels |"}]
 
 ---
 
