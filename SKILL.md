@@ -73,7 +73,39 @@ Mia（美式女声） / Chloe（英式女声）
 
 ---
 
-## 第二步：声音选好了，用它做所有事
+## 第二步：同一个声音，不同演绎方式
+
+声音选好了，但读论文和读睡前故事的读法不一样。**声音不变，演绎方式变。**
+
+| 场景 | 语速 | 语调 | 演绎方式 |
+|:-----|:-----|:-----|:---------|
+| 📚 读论文 | 正常 | 沉稳清晰 | 像认真在给你讲知识 |
+| 📖 读故事 | 偏慢 | 有感情起伏 | 像沉浸在故事里 |
+| 🎙️ 播客 | 偏快 | 自然聊天感 | 像朋友在分享 |
+| 🗣️ 学英语 | 偏慢 | 清晰饱满 | 像在教你 |
+| 😴 睡前 | 慢速 | 越来越轻 | 像在哄你入睡 |
+
+用 `-s` 调语速，用 `--design-prompt` 调演绎方式：
+
+```bash
+# 同一个声音，不同读法
+python3 <skill>/scripts/generate_audio.py 论文.md --voice-design "温柔私语" -s 1.0
+python3 <skill>/scripts/generate_audio.py 故事.md --voice-design "温柔私语" -s 0.9
+python3 <skill>/scripts/generate_audio.py podcast.md --voice-design "温柔私语" -s 1.1
+python3 <skill>/scripts/generate_audio.py 睡前.md --voice-design "温柔私语" -s 0.7
+```
+
+如果内置的演绎方式不够，可以用 `--design-prompt` 自定义风格描述：
+
+```bash
+python3 <skill>/scripts/generate_audio.py 文件.md --voice-design "温柔私语" --design-prompt "用极其沉稳、有专业感的语气朗读，像是在做学术报告"
+```
+
+这样既保持了声音的一致性，又适应了不同场景。
+
+---
+
+## 第三步：用它做所有事
 
 用户有了喜欢的声音，现在用它来做所有事。**不需要再问"用什么声音"了。**
 
