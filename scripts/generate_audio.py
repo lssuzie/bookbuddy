@@ -371,7 +371,8 @@ def call_tts(text, index, api_key, temp_dir, mode, **kwargs):
                 print(f"  ✅ [{index:04d}] ({len(text)}字, {len(audio)/1024:.0f}KB)")
                 return out_path
             else:
-                print(f"  ⚠️ 尝试 {attempt+1} 失败 [{index}]: HTTP {resp.status_code}", end="")
+                detail = resp.text[:200] if resp.text else "(empty)"
+                print(f"  ⚠️ 尝试 {attempt+1} 失败 [{index}]: HTTP {resp.status_code} | {detail}", end="")
                 if attempt < 2:
                     print(" 重试...")
         except Exception as e:
