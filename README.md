@@ -57,17 +57,13 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 > **"你有自己喜欢的声音吗？"**
 
 然后你可以说：
-- "我喜欢林志玲的声音" → Agent 帮你调一个类似风格
-- "用我的声音来读这篇文字稿"
-- "用我的声音读道德经"
-- "不知道，有什么推荐？"
-- "我想听温柔私语"
+- "我喜欢林志玲的声音" → 调一个类似风格，用它读一切
+- "用我的声音读道德经" → 克隆自己的声音
+- "不知道，有什么推荐" → 试听温柔私语 👑
 
-选好声音后，用它做所有事——同一个声音，不同的演绎方式：
-- "帮我读这本书" → 沉稳清晰
-- "Karpathy 最近有什么新观点？帮我做成播客" → 自然聊天感
-- "睡前想听点东西" → 温柔缓慢
-都是同一个声音，只是说话方式变了
+选好声音后，用它做所有事——读论文、播客、学英语、睡前，都是同一个声音，只是说话方式变了。
+
+> 💡 如果你不关心选声音，直接说想听什么就行。BookBuddy 会按内容推荐合适的声音（比如"帮我读道德经"→知识讲述），不满意再说"换一个"。
 
 ---
 
@@ -199,6 +195,10 @@ Then say:
 - "Use my voice to read this"
 - "Not sure, what do you recommend?"
 - "I want Gentle Whisper"
+
+Find your voice and use it for everything — reading papers, podcasts, English, bedtime. Same voice, different delivery.
+
+> 💡 Not interested in choosing a voice? Just say what you want to hear. BookBuddy will pick the right voice for your content (e.g., "read the Tao Te Ching" → Knowledge Narration). Say "switch" if you don't like it.
 
 ---
 
