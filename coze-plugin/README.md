@@ -175,15 +175,15 @@ curl -X GET "https://api.coze.com/v1/voice-presets" \
   "object": "list",
   "data": [
     {
-      "id": "睡前催眠",
-      "name": "睡前催眠",
+      "id": "睡前陪伴",
+      "name": "睡前陪伴",
       "description": "温暖、轻柔、缓慢的女性声音，适合睡前阅读",
       "tone": "soft, warm, slow",
       "speed": 0.8
     },
     {
-      "id": "Her 知性元气",
-      "name": "Her 知性元气",
+      "id": "温柔私语",
+      "name": "温柔私语",
       "description": "温暖、知性、有活力的女性声音，灵感来自《Her》中的 Samantha",
       "tone": "warm, intelligent, energetic, husky, breathy",
       "speed": 0.95
@@ -228,7 +228,7 @@ curl -X GET "https://api.coze.com/v1/voice-presets" \
 {
   "model": "mimo-v2.5-tts-voicedesign",
   "text": "晚安，愿你有个好梦。",
-  "preset": "睡前催眠"
+  "preset": "睡前陪伴"
 }
 ```
 
@@ -236,12 +236,12 @@ curl -X GET "https://api.coze.com/v1/voice-presets" \
 
 | 预设名称 | 描述 | 适用场景 |
 |:---------|:-----|:---------|
-| 睡前催眠 | 温暖、轻柔、缓慢 | 睡前故事 |
-| 冥想引导 | 平静、中性、有磁性 | 冥想音频 |
-| 深夜电台 | 低沉、温暖、有故事感 | 电台节目 |
-| 温柔叙述 | 温柔、亲切 | 小说朗读 |
-| Her 知性元气 | 温暖、知性、有活力 | 知识分享 |
-| 悬疑小说 | 神秘、低沉、有张力 | 悬疑推理 |
+| 温柔私语 👑 | 温暖沙哑，贴耳私语 | 一切——BookBuddy 灵魂声线 |
+| 知识讲述 | 沉稳清晰，像老师在娓娓道来 | 知识阅读 |
+| 故事演绎 | 有戏剧张力，能演绎情绪 | 小说故事 |
+| 播客主持 | 自然亲切，像朋友在聊天 | 播客 |
+| 睡前陪伴 | 温柔缓慢，越来越轻 | 睡前 |
+| 冥想引导 | 空灵安宁，像从远处传来 | 冥想 |
 
 ### 3. 声音克隆
 

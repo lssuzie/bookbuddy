@@ -9,7 +9,7 @@ if [ -z "$MIMO_API_KEY" ]; then
     echo "⚠️  MIMO_API_KEY 未设置，请设置环境变量："
     echo "   export MIMO_API_KEY='sk-xxx'"
     echo ""
-    echo "从 100t.xiaomimimo.com 获取 API Key"
+    echo "从 https://platform.xiaomimimo.com/token-plan 获取 API Key"
     exit 1
 fi
 
@@ -28,7 +28,7 @@ mkdir -p "$TEST_DIR"
 BOOK="--download 道德经"
 
 # 预设列表
-PRESETS=("睡前催眠" "Her 知性元气" "悬疑小说" "深夜电台" "温柔叙述" "冥想引导")
+PRESETS=("温柔私语" "知识讲述" "故事演绎" "播客主持" "睡前陪伴" "冥想引导")
 VOICES=("冰糖" "茉莉" "苏打" "白桦")
 
 echo "🎧 BookBuddy 测试脚本"
