@@ -52,14 +52,18 @@ npx skills add https://github.com/lssuzie/bookbuddy --skill bookbuddy
 帮我安装 BookBuddy skill。把 https://github.com/lssuzie/bookbuddy 克隆到 ~/.claude/skills/bookbuddy，安装后告诉我好了。
 ```
 
-**装好后，直接对 Agent 说：**
+**装好后，BookBuddy 会主动问你：**
 
+> **"你现在想听什么？"**
+
+然后你可以说：
 - "帮我读这本书"
-- "用睡前催眠的声音读"
-- "克隆我的声音"
-- "帮我总结这篇论文生成播客"
+- "我想听梁朝伟读一本书"
+- "Karpathy 最近有什么新观点？帮我做成播客"
+- "读个故事给我听"
+- "睡前想听点东西"
 
-Agent 会自动调用 BookBuddy Skill 完成。
+Agent 会自动理解你的意图，选好声音，直接开读。
 
 ---
 
@@ -77,15 +81,15 @@ Agent 会自动调用 BookBuddy Skill 完成。
 
 **你在读什么？这里直接选：**
 
-| 场景 | 推荐内置音色 | 或试试声音设计 |
-|:-----|:-----------|:--------------|
-| 📚 **知识阅读**（论文、教材、非虚构） | 白桦（沉稳磁性） | 温柔私语 👑 |
-| 📖 **小说/网文**（文学、故事、网文） | 苏打（清爽活力，有演绎感） | 自定义戏剧感声线 |
-| 🗣️ **学英语**（英文文章、对话） | Mia / Chloe | — |
-| 🎙️ **播客**（先总结再生成播客） | 苏打（清晰有活力）或 白桦（沉稳专业） | — |
-| 😴 **放松助眠**（睡前 + 冥想） | 冰糖（清亮甜美） | 睡前催眠 |
-
-> 👑 **温柔私语** — BookBuddy 的灵魂声线。温暖沙哑、贴耳私语，像她想到了什么，然后轻轻地说给你听。灵感来自电影 *Her*。
+| 场景 | 推荐声音 | 为什么 |
+|:-----|:---------|:-------|
+| 📚 **知识阅读**（论文、教材、非虚构） | 「知识讲述」或 **白桦**（沉稳磁性） | 知识传递需要可信和清晰。知识讲述沉稳有权威感，像老师在娓娓道来 |
+| 📖 **小说/网文**（文学、故事） | 「故事演绎」 | 小说需要戏剧张力和情绪演绎，故事演绎专为此设计 |
+| 🎙️ **播客**（先总结再口语化输出） | 「播客主持」或 **苏打**（清爽活力） | 播客是内容输出，不是读书。播客主持像朋友在聊天 |
+| 🗣️ **学英语** | **Mia**（美式）/ **Chloe**（英式） | 母语者发音，学英语最直接的选择 |
+| 😴 **睡前** | 「睡前陪伴」或 **冰糖**（清亮甜美） | 需要温柔缓慢的声音，越来越轻，像在哄睡 |
+| 🧘 **冥想** | 「冥想引导」 | 空灵安宁，像从远处传来 |
+| 🫂 **陪伴**（诗歌、信件、散文） | 「温柔私语」👑 | 不想学东西，只是想让一个声音陪着你 |
 
 ---
 
@@ -196,15 +200,15 @@ Install the BookBuddy skill. Clone https://github.com/lssuzie/bookbuddy to ~/.cl
 
 **What are you reading? Pick your voice:**
 
-| Scenario | Try Built-in | Or Try Voice Design |
-|:---------|:-----------|:-------------------|
-| 📚 **Knowledge** (non-fiction, papers) | 白桦 (Steady) | Gentle Whisper 👑 |
-| 📖 **Novels / Web novels** | 苏打 (Sunny, energetic) | Custom dramatic voice |
-| 🗣️ **Learn English** | Mia / Chloe | — |
-| 🎙️ **Podcast** (summary → audio) | 苏打 (Sunny) or 白桦 (Steady) | — |
-| 😴 **Relax & Sleep** (bedtime + meditation) | 冰糖 (Sweet) | Bedtime Story |
-
-> 👑 **Gentle Whisper** — BookBuddy's soul voice. Warm, husky, intimate whisper. Like she's telling you a story, just between the two of you. Inspired by the movie *Her*.", "oldText": "### Built-in Voices\n\n| Chinese | English |\n|:--------|:--------|\n| 冰糖 (Sweet) | Mia (Bright) |\n| 茉莉 (Gentle) | Chloe (Warm) |\n| 苏打 (Sunny) | Milo (Deep) |\n| 白桦 (Steady) | Dean (Calm) |\n\n---\n\n### Voice Design Presets\n\n| Preset | Best For |\n|:-------|:---------|\n| **Bedtime Story** | Sleep stories |\n| **Meditation** | Meditation audio |\n| **Late Night Radio** | Radio shows |\n| **Gentle Narrative** | Novels |\n| **Her Vitality** | Everything — BookBuddy's soul voice |\n| **Suspense** | Mystery novels |"}]
+| Scenario | Recommended Voice | Why |
+|:---------|:-----------------|:----|
+| 📚 **Knowledge** (non-fiction, papers) | **Knowledge Narration** or **白桦** (Steady) | Knowledge needs credibility. Steady and clear, like a teacher sharing insights |
+| 📖 **Novels / Stories** | **Story Performance** | Novels need drama and emotion. Story Performance is built for this |
+| 🎙️ **Podcast** (summary → conversation) | **Podcast Host** or **苏打** (Sunny) | Podcast is content delivery, not reading. Podcast Host sounds like a friend chatting |
+| 🗣️ **Learn English** | **Mia** (US) / **Chloe** (UK) | Native speakers for authentic pronunciation |
+| 😴 **Bedtime** | **Bedtime Companion** or **冰糖** (Sweet) | Soft and slow, gradually fading, like being gently lulled to sleep |
+| 🧘 **Meditation** | **Meditation Guide** | Ethereal and peaceful, like a voice from afar |
+| 🫂 **Companion** (poetry, letters, essays) | **Gentle Whisper** 👑 | Not for learning — just being accompanied by a voice |
 
 ---
 

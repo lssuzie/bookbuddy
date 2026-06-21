@@ -30,9 +30,9 @@ python3 generate_audio.py 书.txt -v 苏打
 
 ```bash
 # 使用内置预设
-python3 generate_audio.py 书.txt --voice-design "Her 知性元气"
-python3 generate_audio.py 书.txt --voice-design "睡前催眠"
-python3 generate_audio.py 书.txt --voice-design "悬疑小说"
+python3 generate_audio.py 书.txt --voice-design "温柔私语"
+python3 generate_audio.py 书.txt --voice-design "睡前陪伴"
+python3 generate_audio.py 书.txt --voice-design "故事演绎"
 
 # 自定义描述
 python3 generate_audio.py 书.txt --voice-design "低沉磁性的中年男声"
